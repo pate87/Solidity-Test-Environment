@@ -78,5 +78,6 @@ contract voting_dapp {
         else if (teamA == teamC && teamC == teamB && teamB == teamA) {
             return "No one won! DRAW!";
         }
+        return "";
     }
 }
