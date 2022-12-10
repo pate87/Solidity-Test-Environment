@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bootcamp/week2/day_3_inheritence.sol": "inheritence"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bootcamp/week2/day_3_inheritence.sol": {
+			"keccak256": "0x3f83e31207bc029df044111db155c30dbaf9a0a107df486c4f2ef7459bca6b7a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://703d5e69a5c34170f4ed9649023ed657319bd70c995ceb58cd81f523e4d8016e",
+				"dweb:/ipfs/QmPZ1MUDmqzHvLKGnBe99wqHQN7t1WWVcHUSMXoL6Vivd4"
+			]
+		}
+	},
+	"version": 1
+}
