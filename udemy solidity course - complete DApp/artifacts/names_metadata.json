@@ -1,26 +1,13 @@
 {
 	"compiler": {
-		"version": "0.8.17+commit.8df45f5f"
+		"version": "0.8.13+commit.abaa5c0e"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
 				"inputs": [],
-				"name": "age",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "bend",
+				"name": "getName",
 				"outputs": [
 					{
 						"internalType": "string",
@@ -28,25 +15,12 @@
 						"type": "string"
 					}
 				],
-				"stateMutability": "pure",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getAge",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "raise",
+				"name": "name",
 				"outputs": [
 					{
 						"internalType": "string",
@@ -54,7 +28,20 @@
 						"type": "string"
 					}
 				],
-				"stateMutability": "pure",
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					}
+				],
+				"name": "setName",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -71,7 +58,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"bootcamp/week2/day_3_inheritence.sol": "person"
+			"udemy solidity course - complete DApp/Exercise_Deploy_Smart_Contract.sol": "names"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -85,12 +72,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"bootcamp/week2/day_3_inheritence.sol": {
-			"keccak256": "0x6bd3df8e93782914826ba616beef7a989df65a4581bae24409c09027b65f5cc4",
+		"udemy solidity course - complete DApp/Exercise_Deploy_Smart_Contract.sol": {
+			"keccak256": "0x52a9d48a566cd828ef69728ae60d31efc2dbfa30de7cad3e72b69df8472d2677",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a65d198fca11ee43276ca57e028d02ffc77265206ce5d90ad2ea0ea6f87db2ba",
-				"dweb:/ipfs/QmWmxxXqijueGAXczUbZWuAwyA4utYGxkPzszQKhWPiqXt"
+				"bzz-raw://70ab17d6dc5313b974e5a5a2ff32e1eefe34bfedb58c84f32c030cf05667414d",
+				"dweb:/ipfs/QmUSd55BqkVccJPJMLm49DyUe7yoDTpZEgESiW1ZfuYeJw"
 			]
 		}
 	},
