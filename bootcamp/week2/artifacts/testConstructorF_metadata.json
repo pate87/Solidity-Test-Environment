@@ -1,0 +1,70 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getCreator",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bootcamp/week2/day_1.sol": "testConstructorF"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bootcamp/week2/day_1.sol": {
+			"keccak256": "0x44863216e4ee5e766c3689b362ba50c94e48450519fcc83faf06426a4b46173f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f468d18d7e972c317a7796bf6ae789459e5ccc18c2f6eedf3821b69100a3624f",
+				"dweb:/ipfs/QmTgSmnbH4pdxDr82Hd5yM5QL1kTvMjFgiXoE58FggH5Hv"
+			]
+		}
+	},
+	"version": 1
+}
