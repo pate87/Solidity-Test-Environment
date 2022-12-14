@@ -1,0 +1,51 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bootcamp/week2/day_3.sol": "iheritence"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bootcamp/week2/day_3.sol": {
+			"keccak256": "0x7b145237735d498669dfd1c87d44cc21240bf073d5c33feb3d21010247d2c608",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3989dceaf26e6991083e61a00b56921ad18a46a0bf3581b4a86d4a137371dc0f",
+				"dweb:/ipfs/QmW5eeTQn9XJuL3AnxfNtfC74H5BgEqn2SYLVP91vPSGmA"
+			]
+		}
+	},
+	"version": 1
+}
