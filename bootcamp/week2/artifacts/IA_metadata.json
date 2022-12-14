@@ -1,0 +1,59 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getValue",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bootcamp/week2/day_5_Homework_Part_1.sol": "IA"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bootcamp/week2/day_5_Homework_Part_1.sol": {
+			"keccak256": "0x055d323fde115a6f19596a7c0d197a3d26fe0ed8a0e5e8b526cbc08fd1a33301",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3cc785e24c2cdc66d2efda616e501244c1c0a3c4ffaeedd5fbeed91528ae26fa",
+				"dweb:/ipfs/QmSatzFUXxpWTpPToHd9Z991Eoz2zrHT6BwHr1ibZKy6mA"
+			]
+		}
+	},
+	"version": 1
+}

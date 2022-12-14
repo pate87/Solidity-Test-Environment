@@ -1,0 +1,70 @@
+{
+	"compiler": {
+		"version": "0.8.13+commit.abaa5c0e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_contractAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bootcamp/week2/day_2_external_interface.sol": "D"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bootcamp/week2/day_2_external_interface.sol": {
+			"keccak256": "0xbae19f94d0b14062c2a11d31bcd00b0c54fe60ddc992d354f9a49b373ccde389",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://660b3605874f2a7b8a18bf1db6e0bb1d41b2592177ef632e1af7e1dbecd44a7c",
+				"dweb:/ipfs/QmV7EG1a3t3LojzTiRYYzHtiTmaWTYnZ5TRVZfTQQ5JWT7"
+			]
+		}
+	},
+	"version": 1
+}
