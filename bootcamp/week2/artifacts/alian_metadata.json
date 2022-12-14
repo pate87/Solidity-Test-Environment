@@ -84,7 +84,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"bootcamp/week2/day_3_inheritence.sol": "alian"
+			"bootcamp/week2/day_3_inheritance.sol": "alian"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -98,7 +98,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"bootcamp/week2/day_3_inheritence.sol": {
+		"bootcamp/week2/day_3_inheritance.sol": {
 			"keccak256": "0x4558d00a8761264f0f5c2c8a9c39c2d6a19fdf266d3a77131e60c742439fcffc",
 			"license": "MIT",
 			"urls": [
