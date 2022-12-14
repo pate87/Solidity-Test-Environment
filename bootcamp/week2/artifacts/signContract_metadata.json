@@ -1,0 +1,59 @@
+{
+	"compiler": {
+		"version": "0.8.13+commit.abaa5c0e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "sign",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bootcamp/week2/day_5_Homework_Part_1.sol": "signContract"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bootcamp/week2/day_5_Homework_Part_1.sol": {
+			"keccak256": "0xcfe38244ff010f8595dae6e50a791fd4c83ed2686ffe12f8802b50bba899dd21",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f76f28c905411d727d493e9f28fa07c0f620967ad4a4c13831dc05ece1ad296e",
+				"dweb:/ipfs/Qme9qTiNw1m6LvFh9DrGwLZkvDaT3Gyt73WsKmRCMtjTSw"
+			]
+		}
+	},
+	"version": 1
+}
