@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.13+commit.abaa5c0e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bootcamp/week2/day_5_deploy_token.sol": "token"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bootcamp/week2/day_5_deploy_token.sol": {
+			"keccak256": "0xbeb4f78f3a9160a51e4b145000317a57c3d24e3dcf77d04f81d04628d02efed6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d7783d2917baa3cb646c1e62f6e1bd7c5bfaca9df680290b9682d301aa5ca072",
+				"dweb:/ipfs/QmdFDSgznCwhneVAbnFvR7aJJF5nD7fNrQ5DHfv7gV5eFE"
+			]
+		}
+	},
+	"version": 1
+}
