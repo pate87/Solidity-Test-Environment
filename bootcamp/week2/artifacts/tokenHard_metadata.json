@@ -151,7 +151,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"bootcamp/week2/day_5_deploy_token.sol": "tokenHard"
+			"bootcamp/week2/day_5_deploy_token_Hard.sol": "tokenHard"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -165,7 +165,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"bootcamp/week2/day_5_deploy_token.sol": {
+		"bootcamp/week2/day_5_deploy_token_Hard.sol": {
 			"keccak256": "0x53f73bdcbdafa62429dcf5deab07c9f93ac34cc8a4ba3791380cfbec46d2fcc5",
 			"license": "MIT",
 			"urls": [
