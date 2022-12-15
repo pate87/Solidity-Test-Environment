@@ -5,7 +5,7 @@ contract OwnToken {
 
     address private owner;
     uint public totalSuply = 0;
-    string public name = "Patrick Token";
+    string public name = "Patrick Token Hard Coded";
     string public symbol = "PST";
 
     constructor() {

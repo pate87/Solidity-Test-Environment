@@ -128,11 +128,11 @@
 	},
 	"sources": {
 		"bootcamp/week2/day_5_Homework_Part_2_deploy-own_token_Hard.sol": {
-			"keccak256": "0x8a7786f1e6289ec2298ad753f6ee9dfec0757396ab9e98417915627c6572d846",
+			"keccak256": "0x44c239cb10223c4b00ede69e3740ae20963c6a3738147911567c62a9741c0556",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7969392fa09c9945b6c21023a366e10fbd5ae6301f6cae28518db2ad0ccdb4ec",
-				"dweb:/ipfs/Qma66xN2KqtV6dAFc8k9tXwdoBVj9uLUdzm4nv1LYwLzLs"
+				"bzz-raw://dd6f05f16e1ee2310aec4deab5295be99bef77b6889d62f13885f09126d5697f",
+				"dweb:/ipfs/QmYs9uSzKQegosN2Rk3ADCrM8SK58uU8ZnmAQZKkP7mfCt"
 			]
 		}
 	},
