@@ -15,13 +15,13 @@
 pragma solidity ^0.8.13;
 
 interface Itoken {
-    function signMe(address signer,string memory signature) external returns(string memory);
+    function signMe(address signer, string memory signature) external returns(string memory);
 }
 
 contract signContract {
 
-    function sign() public returns(string memory) {
+    function sign() public {
         Itoken signToken = Itoken(0x3CdBff65DaC67cDb6E5c4F05c4DB8FE05C20e4D8);
-        return signToken.signMe(msg.sender, "Hello thanks for this course");
+        signToken.signMe(msg.sender, "Hello thanks for this course");
     }
 }
