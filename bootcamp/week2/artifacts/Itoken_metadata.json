@@ -1,0 +1,70 @@
+{
+	"compiler": {
+		"version": "0.8.13+commit.abaa5c0e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "signer",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "signature",
+						"type": "string"
+					}
+				],
+				"name": "signMe",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bootcamp/week2/day_5_Homework_Part_1.sol": "Itoken"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bootcamp/week2/day_5_Homework_Part_1.sol": {
+			"keccak256": "0xc10488871dc948a36a2b68f88f60075dff29406844753a42d77d16e4c76b88b1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://29fece51a9719cd82c05c21eb7190e643de87081211c680f13915029a74835b9",
+				"dweb:/ipfs/QmSi9Sm8gdkdWoVMhWWHTynxQYYUD883tmcW62oGhKYsKt"
+			]
+		}
+	},
+	"version": 1
+}
