@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"udemy solidity course - complete DApp/dbank_Pay-Investors-Assignment.sol": "dbank_WithStruct"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"udemy solidity course - complete DApp/dbank_Pay-Investors-Assignment.sol": {
+			"keccak256": "0x70d23505d2767dbfae599216a71ea8623f46df48ea9df532cecc9465971077e5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b70897d3131f402bf7a85ab0f27969174baebfcb2c09c6b60f9274b656332422",
+				"dweb:/ipfs/QmWxQXUWmb7GmzNu4GqcbtfgWmZZ83K3Ds3mNdpkzzBtaf"
+			]
+		}
+	},
+	"version": 1
+}
