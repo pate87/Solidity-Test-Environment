@@ -13,6 +13,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					}
+				],
+				"name": "addAddressToOwners",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -64,6 +77,51 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "numberOfVotes",
+						"type": "uint256"
+					}
+				],
+				"name": "numberOfVotesRequire",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "ownerList",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "ownerListLength",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
@@ -93,6 +151,19 @@
 					}
 				],
 				"name": "proposeTransaction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "revokeOnTransaction",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -177,11 +248,11 @@
 	},
 	"sources": {
 		"bootcamp/week3/day_4_multiSigWallet.sol": {
-			"keccak256": "0x9c28cc9e08a4cc732e58d5fb50a438dc2599f7fa5bf5717bae07c5cb4015e7a0",
+			"keccak256": "0xc9d85d3cad9723fe5c81f7eb929f5ac9a83e6f0ac27ca5c27003a618bfb4a19f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://876011db989d183146d41cd92c835eff4fd0661d8a8035887cbf9eee854e1474",
-				"dweb:/ipfs/QmSuVa2hL39zqWg4EJUuJ9wXMGLv67Ep9FYP2yLTmYWn3v"
+				"bzz-raw://b0609f49f7bf5cd68566411e17fbf216bb8893304473132b09673c4f50c9460d",
+				"dweb:/ipfs/QmZ4RKa7bC3SkqYxcWrmmknwDukapjybtt7dCCumz1yTaB"
 			]
 		}
 	},

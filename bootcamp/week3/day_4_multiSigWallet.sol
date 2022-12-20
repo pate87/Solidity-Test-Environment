@@ -11,7 +11,7 @@ contract multiSigLesson {
 
     // mapping to look whether the address is an owner or not
     // mapping is cheaper than array to loop through
-    mapping(address => bool) ownerList;
+    mapping(address => bool) public ownerList;
 
     // mapping into mapping to look for vote on voteOnTransaction()
     // index is looking for the address > address looks for transaction 
@@ -43,12 +43,23 @@ contract multiSigLesson {
     // List of transactions 
     Transaction[] public transactions;
 
+    //3) Add a way to add new owners
+    function addAddressToOwners(address _address) public OnlyOwner {
+        owners.push(_address);
+        ownerList[_address] = true;
+    }
+
+    //2) Add a way to change the number of votes required
+    function numberOfVotesRequire(uint numberOfVotes) public {
+        approvalsNeeded = numberOfVotes;
+    }
+
     // ability receive funds
     // ceate a new transaction and push transaction into transactions array 
     function proposeTransaction(address to, uint amount) public OnlyOwner {
         transactions.push(Transaction({
             sendingTo: to,
-            value: amount + (10**18),
+            value: amount,
             alreadyExecuted: false,
             approvals: 0
         }));
@@ -59,6 +70,14 @@ contract multiSigLesson {
         require(alreadyVoted[index][msg.sender] == false, "You've already voted");
         transactions[index].approvals += 1;
         alreadyVoted[index][msg.sender] = true;
+    }
+    
+    //1) Add a way to revoke a vote
+    // revoke on that propsal
+    function revokeOnTransaction(uint index) public OnlyOwner {
+        require(alreadyVoted[index][msg.sender] == true, "You haven't voted yet");
+        transactions[index].approvals -= 1;
+        alreadyVoted[index][msg.sender] = false;
     }
 
     // execute transaction if has enough votes - send tokens from one to another wallet
@@ -75,6 +94,10 @@ contract multiSigLesson {
         // update state of alreadyExecuted to check the require statement after second use
         transactions[index].alreadyExecuted = true;
     }
+
+    function ownerListLength() public view returns(uint) {
+        return owners.length;
+    }
 }
 
 /*
@@ -86,3 +109,9 @@ contract multiSigLesson {
 // retract a vote
 // execute transaction
 */
+
+   //want a challenge?
+
+   //1) Add a way to revoke a vote
+   //2) Add a way to change the number of votes required
+   //3) Add a way to add new owners
