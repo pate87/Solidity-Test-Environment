@@ -67,6 +67,7 @@ contract multiSigLesson {
 
     // vote on that propsal
     function voteOnTransaction(uint index) public OnlyOwner {
+        // look into the capsuled mapping - First look for index > then look for address and get the boolean of address  
         require(alreadyVoted[index][msg.sender] == false, "You've already voted");
         transactions[index].approvals += 1;
         alreadyVoted[index][msg.sender] = true;
