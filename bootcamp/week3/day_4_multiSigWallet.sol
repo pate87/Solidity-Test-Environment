@@ -50,7 +50,7 @@ contract multiSigLesson {
     }
 
     //2) Add a way to change the number of votes required
-    function numberOfVotesRequire(uint numberOfVotes) public {
+    function numberOfVotesRequire(uint numberOfVotes) public OnlyOwner {
         approvalsNeeded = numberOfVotes;
     }
 
