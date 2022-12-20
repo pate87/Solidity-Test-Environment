@@ -27,6 +27,9 @@ contract multiSigLesson {
     constructor() {
         owners.push(msg.sender);
         ownerList[msg.sender] = true;
+
+        owners.push(0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2);
+        ownerList[0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2] = true;
     }
 
     // creating a new variable that holds the information
@@ -41,9 +44,30 @@ contract multiSigLesson {
     Transaction[] public transactions;
 
     //3) Add a way to add new owners
-    function addAddressToOwners(address _address) public OnlyOwner {
-        owners.push(_address);
-        ownerList[_address] = true;
+    // My Solution
+    // function addAddressToOwners(address _address) public OnlyOwner {
+    //     owners.push(_address);
+    //     ownerList[_address] = true;
+    // }
+
+    // Solution of exercise 3 with enhanced voting feature to add an address 
+
+    // mapping to check the vote for the address which to push into new owner list
+    mapping(address => uint) public votesToNewAddress;
+
+    // mapping which points to another mapping which point to a boolean 
+    mapping(address => mapping(address => bool)) public alreadyVotedNewAddress;
+
+    function votingOnNewAddress(address _address) public OnlyOwner {
+        require(alreadyVotedNewAddress[_address][msg.sender] == false, "You've already voted on this address");
+        
+        votesToNewAddress[_address] += 1;
+        alreadyVotedNewAddress[_address][msg.sender] = true;
+
+        if(votesToNewAddress[_address] >= approvalsNeeded) {
+            owners.push(_address);
+            ownerList[_address] = true;
+        }
     }
 
     //2) Add a way to change the number of votes required

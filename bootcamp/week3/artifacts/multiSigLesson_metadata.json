@@ -13,19 +13,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "_address",
-						"type": "address"
-					}
-				],
-				"name": "addAddressToOwners",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -37,6 +24,30 @@
 					}
 				],
 				"name": "alreadyVoted",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "alreadyVotedNewAddress",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -216,6 +227,38 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "votesToNewAddress",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					}
+				],
+				"name": "votingOnNewAddress",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"stateMutability": "payable",
 				"type": "receive"
 			}
@@ -248,11 +291,11 @@
 	},
 	"sources": {
 		"bootcamp/week3/day_4_multiSigWallet.sol": {
-			"keccak256": "0xc78e3db2c8b09eba43042cf77d1458c7434b654c13eec8f30e26f64d84f98da7",
+			"keccak256": "0x20063f75153e5bcc074c25e2f4b02aafe9d7bb4c645e7f862903956a9b6577d9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8222f07f13a392c301db09fd12a896b42e6aeddad9ffaa0e704eaaad3bc9c14e",
-				"dweb:/ipfs/Qma98TsSz3kDPcc2nTHH19jHk696yJcPqzZUEWqjAhrTJB"
+				"bzz-raw://6c76e27f8ec249f97852746f6ff0cd3f246bffe41c378cd33a0913ad8b6a5367",
+				"dweb:/ipfs/QmSU1r6SE1JY3zJGu1xZP5Qjjae9BdBGqvmiE9tcn9HGws"
 			]
 		}
 	},
