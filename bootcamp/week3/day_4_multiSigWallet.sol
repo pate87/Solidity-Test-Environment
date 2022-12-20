@@ -27,9 +27,6 @@ contract multiSigLesson {
     constructor() {
         owners.push(msg.sender);
         ownerList[msg.sender] = true;
-
-        owners.push(0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2);
-        ownerList[0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2] = true;
     }
 
     // creating a new variable that holds the information
@@ -76,6 +73,7 @@ contract multiSigLesson {
     //1) Add a way to revoke a vote
     // revoke on that propsal
     function revokeOnTransaction(uint index) public OnlyOwner {
+        // look into the capsuled mapping - First look for index > then look for address and get the boolean of address  
         require(alreadyVoted[index][msg.sender] == true, "You haven't voted yet");
         transactions[index].approvals -= 1;
         alreadyVoted[index][msg.sender] = false;
