@@ -16,6 +16,43 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getStorageFactory",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_number",
+						"type": "uint256"
+					}
+				],
+				"name": "sfStore",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
@@ -60,19 +97,19 @@
 	},
 	"sources": {
 		"FreeCodeCamp/SimpleStorage.sol": {
-			"keccak256": "0xa36948f8423b6fcec728367198e5d34921814cbcd44e03430830736e8a0dc36f",
+			"keccak256": "0xfd2d8fac00a69ac2d4044f9789c6cc6937e23180083165839802897fbd1f3762",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3105d004381d9bc6e129e59b83f73f90925859c801082b640701db10734f07e6",
-				"dweb:/ipfs/Qma3T2ayzF2WGvXJpWc4R37BAe2DiGXbHjd91zmxCQiU7R"
+				"bzz-raw://38daf96a2f518d9efdd74cf855488f2880994995a874bd360f693e59b16f4082",
+				"dweb:/ipfs/QmbP2BJykp1cCk5LGzAELeVQSEvNubRCgDK7NFsVSp8F3i"
 			]
 		},
 		"FreeCodeCamp/StorageFactory.sol": {
-			"keccak256": "0x2fe53debbe0647f9996af909f147a5ac5d1f50c65d063455ca1063ae67a2c46c",
+			"keccak256": "0x05ec33bca96aba222c8664c57fa60d701bf2159f07ccf05ea9d245b1bf89db2e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c138879ffe97ffb92deeed74a8c6097001f063dc3d55dd709b2fc59bbf9803ce",
-				"dweb:/ipfs/QmWX7Wkxstq1ErwUgB4ZCzmcZyDvLn35Dx7QHnvRDD2VjJ"
+				"bzz-raw://a90c6f1f5a9819fd13ff098a519b6d0cda2e444dc740256116be9df686a71e19",
+				"dweb:/ipfs/QmRfaHrLNQPxxmk2CsViN3668aAYFs3n8DgTxKaScPDM1A"
 			]
 		}
 	},
