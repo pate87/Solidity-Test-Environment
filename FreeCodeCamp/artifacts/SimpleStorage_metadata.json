@@ -102,6 +102,19 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_favoriteNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "store",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -132,11 +145,11 @@
 	},
 	"sources": {
 		"FreeCodeCamp/SimpleStorage.sol": {
-			"keccak256": "0xfd2d8fac00a69ac2d4044f9789c6cc6937e23180083165839802897fbd1f3762",
+			"keccak256": "0xcf8a747385893b3ba44996430c1d40dd1b2ed538903fc60a00f21acb80183b4b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://38daf96a2f518d9efdd74cf855488f2880994995a874bd360f693e59b16f4082",
-				"dweb:/ipfs/QmbP2BJykp1cCk5LGzAELeVQSEvNubRCgDK7NFsVSp8F3i"
+				"bzz-raw://b3c190a51d909ecbefc571cc8d382a7397c738eac371a35be7305939f0b0bdd1",
+				"dweb:/ipfs/QmTxTp6NJpVETkJ9ZDmfvzgSJ5LXYguqBNaeHjyTZe4TAe"
 			]
 		}
 	},

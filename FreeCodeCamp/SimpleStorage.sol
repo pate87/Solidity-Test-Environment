@@ -17,6 +17,9 @@ contract SimpleStorage {
     function addPerson(uint256 _favoriteNumber, string memory _name) public {
         people.push(People(_favoriteNumber, _name));
         nameToFavoriteNumber[_name] = _favoriteNumber;
+    }
+
+    function store(uint256 _favoriteNumber) public virtual {
         favoriteNumber = _favoriteNumber;
     }
 
