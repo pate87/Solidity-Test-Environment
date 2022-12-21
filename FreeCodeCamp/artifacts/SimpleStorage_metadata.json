@@ -89,6 +89,19 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "retrieve",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -119,11 +132,11 @@
 	},
 	"sources": {
 		"FreeCodeCamp/SimpleStorage.sol": {
-			"keccak256": "0xa36948f8423b6fcec728367198e5d34921814cbcd44e03430830736e8a0dc36f",
+			"keccak256": "0x98e9f08661da742795b305805660b5f5a39a7785f3533a236fd6659028e191fa",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3105d004381d9bc6e129e59b83f73f90925859c801082b640701db10734f07e6",
-				"dweb:/ipfs/Qma3T2ayzF2WGvXJpWc4R37BAe2DiGXbHjd91zmxCQiU7R"
+				"bzz-raw://afacddedc94b5157962f23bbc49f92669820e620d238ebee16a5a76c48bf8388",
+				"dweb:/ipfs/QmPXYNaJFNVbzyC34p7ZejxjfJ4JzVjd5yoR8koD8LkHw2"
 			]
 		}
 	},
