@@ -6,101 +6,10 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_minimumFundsValue",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address payable",
-						"name": "funder",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
+				"inputs": [],
 				"name": "fund",
 				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "funderArray",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "fundsAmountOfAddress",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "totalFunds",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "transferFunds",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			}
 		],
@@ -117,7 +26,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"FreeCodeCamp/FundMe/Fundme-SelfTryFirst.sol": "FundMe"
+			"FreeCodeCamp/FundMe/FundMe.sol": "FundMe"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -131,12 +40,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"FreeCodeCamp/FundMe/Fundme-SelfTryFirst.sol": {
-			"keccak256": "0x382c4a330484339e88de7822ffff36fd5c357a5e14d3cd83864314d7a391b477",
+		"FreeCodeCamp/FundMe/FundMe.sol": {
+			"keccak256": "0x4d094e108616963245177132bedfce49b17563458c298bf03488a79293e47e06",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f883d9a7c1af0a417121062bd04a4adba640886a59cc38412de2b786c342e25d",
-				"dweb:/ipfs/QmPFRXNZWpoRQoHb6GVfMhTDdLdg4n2jpdxtDJcrVmnrrB"
+				"bzz-raw://e5452b7941cef82af855741c91675a05a97e883411706a72c3c059d4b1e2a0c0",
+				"dweb:/ipfs/QmQjHALRcxQ7bUcWPPnfamSQfvw1pUqAnYrhDQYdg46Utv"
 			]
 		}
 	},

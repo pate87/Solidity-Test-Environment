@@ -35,7 +35,7 @@ contract FundMe {
     }
 
     // withdraw funds
-    function transferFunds(address to, uint amount) public onlyOwner {
+    function withdraw(address to, uint amount) public onlyOwner {
         require(totalFunds >= minimumFundsValue, "The minimum funds arent achived yet");
         require(amount <= fundsAmountOfAddress[to], "You've not enough funds");
         fundsAmountOfAddress[to] -= amount;
