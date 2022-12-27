@@ -11,6 +11,38 @@
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "fundsAmountOfAddress",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "minimumUsd",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -41,11 +73,11 @@
 	},
 	"sources": {
 		"FreeCodeCamp/FundMe/FundMe.sol": {
-			"keccak256": "0x4d094e108616963245177132bedfce49b17563458c298bf03488a79293e47e06",
+			"keccak256": "0x72fb16c8be71040125ba8b786230009375740511c820d89e9e7bf7d55acaa1ef",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e5452b7941cef82af855741c91675a05a97e883411706a72c3c059d4b1e2a0c0",
-				"dweb:/ipfs/QmQjHALRcxQ7bUcWPPnfamSQfvw1pUqAnYrhDQYdg46Utv"
+				"bzz-raw://5333fe24e9b813d8e0fa0aa1421d70677963407df88f8489a96700b7d946f001",
+				"dweb:/ipfs/QmYJFkifTN4XUNLS78UGH4gLhC6uv1dFzFCWX1vzZ5UEph"
 			]
 		}
 	},
