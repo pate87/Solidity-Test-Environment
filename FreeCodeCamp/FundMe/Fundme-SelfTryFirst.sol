@@ -41,11 +41,6 @@ contract FundMe {
         fundsAmountOfAddress[to] -= amount;
         totalFunds -= amount;
     }
-
-
-    // function setMinimumFundingValue(uint amount) public {
-    //     minimumFundsValue = _minimumFundsValue;
-    // }
 }
 
 

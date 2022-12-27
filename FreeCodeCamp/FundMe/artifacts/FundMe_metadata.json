@@ -6,10 +6,51 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_minimumFundsValue",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "funder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
 				"name": "fund",
 				"outputs": [],
-				"stateMutability": "payable",
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "funderArray",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -33,7 +74,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "minimumUsd",
+				"name": "totalFunds",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -42,6 +83,24 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -58,7 +117,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"FreeCodeCamp/FundMe/FundMe.sol": "FundMe"
+			"FreeCodeCamp/FundMe/Fundme-SelfTryFirst.sol": "FundMe"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -72,12 +131,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"FreeCodeCamp/FundMe/FundMe.sol": {
-			"keccak256": "0x72fb16c8be71040125ba8b786230009375740511c820d89e9e7bf7d55acaa1ef",
+		"FreeCodeCamp/FundMe/Fundme-SelfTryFirst.sol": {
+			"keccak256": "0x9f2a0d9935ff637933af23d1ecf0ea50319f5777aa8b0aa7544713108a7b120e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5333fe24e9b813d8e0fa0aa1421d70677963407df88f8489a96700b7d946f001",
-				"dweb:/ipfs/QmYJFkifTN4XUNLS78UGH4gLhC6uv1dFzFCWX1vzZ5UEph"
+				"bzz-raw://5180e69ce42ebc8acc7332a730ae6d7c4d46c90ca236775920456c1440f8a1d8",
+				"dweb:/ipfs/QmS73K3Siv7ph6rGj14o3eoLErCUqYBUVUm4YjrPRUv8Yf"
 			]
 		}
 	},
