@@ -3,6 +3,12 @@ pragma solidity ^0.8.13;
 
 contract NumberToString {
 
+    // Insert [16,1,20,18,9,3,11] to get my name 
+
+    // first test string with letter to debug the function loop
+    // string memory word = "A";
+    string word = "";
+
     constructor() {
         counter[1] = "A";
         counter[2] = "B";
@@ -39,10 +45,6 @@ contract NumberToString {
 
     function numberToString(uint[] memory number) public returns(string memory) {
 
-        // first test string with letter to debug the function loop
-        // string memory word = "A";
-        string memory word = "";
-
         for(uint i = 0; i < number.length; i++) {
             // emit test1(i);
             string memory letter = counter[number[i]];
@@ -50,6 +52,10 @@ contract NumberToString {
             emit test2(word);
         }
 
+        return word;
+    }
+
+    function getWord() public view returns(string memory) {
         return word;
     }
 

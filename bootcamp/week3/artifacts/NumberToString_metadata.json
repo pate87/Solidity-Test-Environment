@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.17+commit.8df45f5f"
+		"version": "0.8.13+commit.abaa5c0e"
 	},
 	"language": "Solidity",
 	"output": {
@@ -45,6 +45,19 @@
 					}
 				],
 				"name": "counter",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getWord",
 				"outputs": [
 					{
 						"internalType": "string",
@@ -103,11 +116,11 @@
 	},
 	"sources": {
 		"bootcamp/week3/day_5_homework_part_2_number_array_string_output.sol": {
-			"keccak256": "0xa00a5287c672d54b4134d6787cd9ef26c59a4c91d61fbe68dba6de680840cbc9",
+			"keccak256": "0x0b7c6d95069549371fb5589cdc2d13a970630063919be06098683e70465828fa",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://42beb48f821c7e7b7930b8e911dd2127b21cb40e14b37a12212585812d17cb37",
-				"dweb:/ipfs/QmRfuW3vnMQa97umuqYXzUJnY3L3CAeRH9RAWGwVaMTsVR"
+				"bzz-raw://b23d6d882c57fb493e7b46e0597d636723ce055dc4f35ede4b79de1ca18b44ed",
+				"dweb:/ipfs/QmZt5EfS6BDYLd1QHtH7CrjJQnx6GuYQnkx2Ty87UTzu67"
 			]
 		}
 	},
