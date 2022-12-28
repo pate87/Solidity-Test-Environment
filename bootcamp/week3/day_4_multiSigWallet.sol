@@ -64,16 +64,32 @@ contract multiSigLesson {
         votesToNewAddress[_address] += 1;
         alreadyVotedNewAddress[_address][msg.sender] = true;
 
+        // Check the votes on the new address 
         if(votesToNewAddress[_address] >= approvalsNeeded) {
-            owners.push(_address);
-            ownerList[_address] = true;
+            // Check whether the majority is even to the approvalsNeeded
+            if(owners.length % 2 == 0){
+                // Devide owners array by 2 
+                approvalsNeeded = owners.length / 2;
+                owners.push(_address);
+                ownerList[_address] = true;
+                //2) Add a way to change the number of votes required - update majority
+                approvalsNeeded += 1;
+            // Check whether the majority is NOT even to the approvalsNeeded
+            } else {
+                // Add 1 to owners array and devided by 2
+                approvalsNeeded = (owners.length + 1) / 2;
+                owners.push(_address);
+                ownerList[_address] = true;
+                //2) Add a way to change the number of votes required - update majority
+                approvalsNeeded += 1;
+            }
         }
     }
 
     //2) Add a way to change the number of votes required
-    function numberOfVotesRequire(uint numberOfVotes) public OnlyOwner {
-        approvalsNeeded = numberOfVotes;
-    }
+    // function numberOfVotesRequire(uint numberOfVotes) public OnlyOwner {
+    //     approvalsNeeded = numberOfVotes;
+    // }
 
     // ability receive funds
     // ceate a new transaction and push transaction into transactions array 

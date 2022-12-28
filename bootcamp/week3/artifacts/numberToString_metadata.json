@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bootcamp/week3/day_5_homework_part_2_number_array_string_output.sol": "numberToString"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bootcamp/week3/day_5_homework_part_2_number_array_string_output.sol": {
+			"keccak256": "0x6f4e1a07cc6268796395497eef979b9bb9609af8cc33fac29114373e6941fe8b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cbfa15347fb6c70cbdc8a743b9bb66aaad33728c126bbda17d8023e4fd23d63d",
+				"dweb:/ipfs/QmU2bsbkrodreXpikdRheeVz3Hq8VRwciQcsXKnh2b2zWC"
+			]
+		}
+	},
+	"version": 1
+}

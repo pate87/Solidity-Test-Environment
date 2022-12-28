@@ -87,19 +87,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "numberOfVotes",
-						"type": "uint256"
-					}
-				],
-				"name": "numberOfVotesRequire",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
@@ -291,11 +278,11 @@
 	},
 	"sources": {
 		"bootcamp/week3/day_4_multiSigWallet.sol": {
-			"keccak256": "0x20063f75153e5bcc074c25e2f4b02aafe9d7bb4c645e7f862903956a9b6577d9",
+			"keccak256": "0xacef9cdd62f4ee7f9293eeaabf0b9d0ec0df263cce12fcf8454848d5379cf0aa",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6c76e27f8ec249f97852746f6ff0cd3f246bffe41c378cd33a0913ad8b6a5367",
-				"dweb:/ipfs/QmSU1r6SE1JY3zJGu1xZP5Qjjae9BdBGqvmiE9tcn9HGws"
+				"bzz-raw://8795e1c8dbca99a88ca9a8d1cfc763bc5d142940ac348f3479f9d36e4538b790",
+				"dweb:/ipfs/QmUmAVbucShV3pAGZYvyLZqDaE4wVzbnxKQsiiGb2tfFsk"
 			]
 		}
 	},
