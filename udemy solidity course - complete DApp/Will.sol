@@ -38,4 +38,10 @@ contract Will {
             familyWallets[i].transfer(walletsOfFamily[familyWallets[i]]);
         }
     }
+
+    // Emulate Oracle switch
+    function isDeceased() public {
+        deceased == true;
+        transfer();
+    }
 }

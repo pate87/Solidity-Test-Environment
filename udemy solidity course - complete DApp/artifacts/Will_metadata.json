@@ -11,6 +11,13 @@
 				"type": "constructor"
 			},
 			{
+				"inputs": [],
+				"name": "isDeceased",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address payable",
@@ -57,11 +64,11 @@
 	},
 	"sources": {
 		"udemy solidity course - complete DApp/Will.sol": {
-			"keccak256": "0x0b959fb775204bd22df91a8a3f2fe7fa42fb72cd4963c92cf3e2e939e653554d",
+			"keccak256": "0xc38a97e08a96128b0302aea1baf5491d4a5baebb6e58e20fb8bca720d8833ff4",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://fac195338dfd5bab2b73416fdaa9fb2377e73fc9d442689a7f73e89e40e5d490",
-				"dweb:/ipfs/QmbAzVumMamhzg7nQpE4LHFapTATbffS7WfxELhHLN8ad6"
+				"bzz-raw://ede0204df2a9928c58c5547bda3c469ff50e45d6d384cd365daf354d75953fe5",
+				"dweb:/ipfs/QmakPHgBbA2XhbZYuYKsQ1VwYdDEPNU7GGtgFLSabq2UNy"
 			]
 		}
 	},
