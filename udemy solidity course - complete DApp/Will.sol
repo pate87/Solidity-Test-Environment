@@ -30,4 +30,12 @@ contract Will {
         familyWallets.push(wallet);
         walletsOfFamily[wallet] = amount;
     }
+
+    // Pay each family member based on their wallet address 
+    function transfer() private mustBeDeceased {
+        for(uint i = 0; i <= familyWallets.length; i++) {
+            // transfering the funds from contract address to reciever address 
+            familyWallets[i].transfer(walletsOfFamily[familyWallets[i]]);
+        }
+    }
 }
