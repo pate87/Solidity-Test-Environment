@@ -26,7 +26,7 @@ contract Will {
 
     mapping(address => uint) walletsOfFamily;
 
-    function setFamilyWallets(address payable wallet, uint amount) public {
+    function setFamilyWallets(address payable wallet, uint amount) public onlyOwner {
         familyWallets.push(wallet);
         walletsOfFamily[wallet] = amount;
     }
