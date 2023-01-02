@@ -1,0 +1,95 @@
+{
+	"compiler": {
+		"version": "0.8.13+commit.abaa5c0e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "checkInvestors",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "makePayment",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "wallet",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "payInvestors",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"udemy solidity course - complete DApp/pay-investors-solution.sol": "AddressWallets"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"udemy solidity course - complete DApp/pay-investors-solution.sol": {
+			"keccak256": "0x1d3dde5cfe8df35bcca064f13f91c25b7326802ffa8cb86e9463686220cd91f5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://798f0b998e21d7f72e70cb7a1159709f020715de884cbe12c1bd7000d76cd5ee",
+				"dweb:/ipfs/QmRGANuXdNiK4AbKyNDJRn51cpnaLGQjheQbeq7Bz8WZTy"
+			]
+		}
+	},
+	"version": 1
+}
