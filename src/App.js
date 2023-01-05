@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './Header';
-import MainSection from './MainSection';
+// import MainSection from './MainSection';
+import Todo from './Todo';
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
         <Header />
       </header>
       <main>
-        <MainSection />
+  
+        <Todo />
       </main>
     </div>
   );
