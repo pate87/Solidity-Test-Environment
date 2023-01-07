@@ -8,17 +8,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "ownerAddress",
-						"type": "address"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "string",
 						"name": "_task",
 						"type": "string"
@@ -26,6 +15,44 @@
 				],
 				"name": "createTask",
 				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "isOwner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "ownerAddress",
+						"type": "address"
+					}
+				],
+				"name": "setOwner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
@@ -118,11 +145,11 @@
 	},
 	"sources": {
 		"bootcamp/week5/day_1_ToDo_List.sol": {
-			"keccak256": "0xdb686c12521e5979ddd85bfed06a159c55a3c58413f1924f8463796559d5f584",
+			"keccak256": "0x83e321c9919007932202d806720dcc12054f2605bd0428a8da9b88195eb8322b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e450b562496717b8c92c6ab88e6e847645f2ab526a25a3de6d85dd8dfcad4c77",
-				"dweb:/ipfs/QmbsRS6F2vDCgDTopjDsBcDMtD4S5yqUf2HJm4zmN3TmJn"
+				"bzz-raw://e902c605a5227c94ceb6c199e94571fce76ce71a9997878cb8adfcf169f877c1",
+				"dweb:/ipfs/QmPUNjM12ku6iuU1Rd8UHXA4NJ6SUBAhM7V3ZJsvkKeAvU"
 			]
 		}
 	},

@@ -14,21 +14,20 @@ contract ToDo {
         uint completedTime;
     }
 
-    constructor(address ownerAddress) {
-        owner = ownerAddress;
-    } 
-    
-    modifier onlyOwner {
-        owner == msg.sender;
-        _;
+    mapping(address => bool) public isOwner;
+
+    function setOwner(address ownerAddress) public returns(bool) {
+        return isOwner[ownerAddress] = true;
     }
 
-    function createTask(string memory _task) public onlyOwner {
+    function createTask(string memory _task) public {
+        require(isOwner[msg.sender] == true, "You're not the owner");
         taskList[totalTasks] = Task(totalTasks, _task, false, 0);
         totalTasks += 1;
     }
 
-    function toggleTask(uint index) public onlyOwner {
+    function toggleTask(uint index) public {
+        require(isOwner[msg.sender] == true, "You're not the owner");
         if(!taskList[index].completedYet) {
             taskList[index].completedTime = block.timestamp;
         } else {
