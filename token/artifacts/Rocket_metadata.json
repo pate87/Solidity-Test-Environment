@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.13+commit.abaa5c0e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"token/rocket_token.sol": "Rocket"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"token/rocket_token.sol": {
+			"keccak256": "0xb503df9e12def24893702e9c02d6c55f9b88dff194f9a23abd436159bf1892a8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://69a8993882bfe49807b641f93dc61e6c187aac02def90103e248eb1ab20889f2",
+				"dweb:/ipfs/QmeuA3tL8k83EodQRqLmQyJh637c8EjtGWs1d1ZTACBwnY"
+			]
+		}
+	},
+	"version": 1
+}

@@ -21,6 +21,44 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "isOwner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "ownerAddress",
+						"type": "address"
+					}
+				],
+				"name": "setOwner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -107,11 +145,11 @@
 	},
 	"sources": {
 		"bootcamp/week5/day_1_ToDo_List.sol": {
-			"keccak256": "0xf1dcdbdebed09b191351ef1a43d3cfb3c0d8c52696c5cdf88b92b2d00dcef8cb",
+			"keccak256": "0x83e321c9919007932202d806720dcc12054f2605bd0428a8da9b88195eb8322b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b2543660edfc4d0fc0b2148a45ae899502d59f1991d1b81b433b58ec09fe7083",
-				"dweb:/ipfs/QmSg6sgecpuyjwXkEnP6yWWAoTvNwni8JH9YBtAPjoidmc"
+				"bzz-raw://e902c605a5227c94ceb6c199e94571fce76ce71a9997878cb8adfcf169f877c1",
+				"dweb:/ipfs/QmPUNjM12ku6iuU1Rd8UHXA4NJ6SUBAhM7V3ZJsvkKeAvU"
 			]
 		}
 	},
