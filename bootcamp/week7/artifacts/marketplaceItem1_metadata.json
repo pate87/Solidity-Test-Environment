@@ -26,6 +26,32 @@
 			},
 			{
 				"inputs": [],
+				"name": "getCurrentPriceOfETH",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPriceOfETH",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "owner",
 				"outputs": [
 					{
@@ -35,6 +61,19 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "payInEth",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -130,12 +169,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"bootcamp/week7/day_1_marketplaceItem1.sol": {
-			"keccak256": "0xd826a41032fc5f5c16ce9711ef2059764968fdefb1fb34bbfd4c76d4479d8800",
+		"@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol": {
+			"keccak256": "0x6e6e4b0835904509406b070ee173b5bc8f677c19421b76be38aea3b1b3d30846",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a9e025fff8d717b1ca50ecb6dd9500e68c8e3f01bb1421b7771cff7cfb596d1a",
-				"dweb:/ipfs/Qme96ihz1fQyBErNqUC4a99LFhAgFL9QAXkX9tEyAoAasy"
+				"bzz-raw://b3beaa37ee61e4ab615e250fbf01601ae481de843fd0ef55e6b44fd9d5fff8a7",
+				"dweb:/ipfs/QmeZUVwd26LzK4Mfp8Zba5JbQNkZFfTzFu1A6FVMMZDg9c"
+			]
+		},
+		"bootcamp/week7/day_1_marketplaceItem1.sol": {
+			"keccak256": "0x9c4cbb2a91973ef108c61b81565ff1768b4df794b8f3079fc28441124dbc88fd",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0473fc6c149ec0ba9f17c9a13e8a253e788836751591d105c797efbb030dd17a",
+				"dweb:/ipfs/QmchxojcwXkwZtRrnFbbv3ZvsYcY31mf326cC8GtyU2J4h"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/IERC20.sol": {
