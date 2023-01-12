@@ -7,7 +7,7 @@ contract usdt is ERC20 ("USDTTest", "USDTTest"){
 
 
     function mintTwenty() public{
-        _mint(msg.sender, 20);
+        _mint(msg.sender, 20 * 10**20);
     }
 
 }
