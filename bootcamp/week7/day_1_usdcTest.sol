@@ -7,7 +7,7 @@ contract usdc is ERC20 ("USDCTest", "USDCTest"){
 
 
     function mintTwenty() public{
-        _mint(msg.sender, 20);
+        _mint(msg.sender, 20 * 10^18);
     }
 
 }
