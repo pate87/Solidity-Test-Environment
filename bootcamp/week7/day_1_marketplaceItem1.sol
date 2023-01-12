@@ -47,4 +47,14 @@ contract marketplaceItem1 {
         alreadyBought[msg.sender] = true;
         return alreadyBought[msg.sender];
     }
+
+    function changeOwner(address newOwner) public {
+        require(msg.sender == owner, "You're not the owner");
+        owner = newOwner;
+    }
+
+    function changePrice(uint newPrice) public {
+        require(msg.sender == owner, "You're not the owner");
+        price = newPrice;
+    }
 }
