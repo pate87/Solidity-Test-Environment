@@ -9,11 +9,11 @@ contract marketplaceItem1 {
     AggregatorV3Interface internal priceFeed = AggregatorV3Interface(0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e);
 
     mapping (address => bool) public alreadyBought;
-    uint public price = 10 * 10**18;
+    uint public price = 10e18; // 10e18, 10 * 10**18 Convert 1 wei to 1 ETH
     address public owner = payable(msg.sender);
 
-    IERC20 public usdcTestToken = IERC20(0xd9145CCE52D386f254917e481eB44e9943F39138);
-    IERC20 public usdtTestToken = IERC20(0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8);
+    IERC20 public usdcTestToken = IERC20(0xce4BBa458ED6D2efef2bc8bfEb5ec5fb035dd822);
+    IERC20 public usdtTestToken = IERC20(0xb6651cc8429624b22E5e8E224767A8B26809EA6c);
 
     function payInUSDC() public returns(bool){
         require(alreadyBought[msg.sender] == false, "You already bought this item");

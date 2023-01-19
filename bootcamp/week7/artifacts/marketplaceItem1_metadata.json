@@ -25,6 +25,32 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "changeOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newPrice",
+						"type": "uint256"
+					}
+				],
+				"name": "changePrice",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "getCurrentPriceOfETH",
 				"outputs": [
@@ -178,11 +204,11 @@
 			]
 		},
 		"bootcamp/week7/day_1_marketplaceItem1.sol": {
-			"keccak256": "0x9c4cbb2a91973ef108c61b81565ff1768b4df794b8f3079fc28441124dbc88fd",
+			"keccak256": "0xe660bbe837dccf92016f6ca299f5f590169ca2d28cbf5a7d40d2d333c470be44",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0473fc6c149ec0ba9f17c9a13e8a253e788836751591d105c797efbb030dd17a",
-				"dweb:/ipfs/QmchxojcwXkwZtRrnFbbv3ZvsYcY31mf326cC8GtyU2J4h"
+				"bzz-raw://3a6f8f733d12d2e50da3eacd1c0a2a965b9c750ad935446b8c55fcd5f51f7262",
+				"dweb:/ipfs/QmT9KFNSKCTBCCvhftVHrpSxa65kHTb4Q1kDDwJPGjtBKu"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/IERC20.sol": {
