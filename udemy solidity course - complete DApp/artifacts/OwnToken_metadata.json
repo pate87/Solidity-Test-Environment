@@ -208,7 +208,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"udemy solidity course - complete DApp/Build a Basic Token/basic_token.sol": "basicToken"
+			"udemy solidity course - complete DApp/Custom-Token-Assignment.sol": "OwnToken"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -222,12 +222,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"udemy solidity course - complete DApp/Build a Basic Token/basic_token.sol": {
-			"keccak256": "0xa966d6a831ef48b3013157cbb2eeae1345f417354ceace3e1bd4728c86255761",
-			"license": "GPL-3.0",
+		"udemy solidity course - complete DApp/Custom-Token-Assignment.sol": {
+			"keccak256": "0x731db8960b9ee2e5096ec88d40e99043cd19f279f51c8bf5bec19ea2c95bf032",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://cb735f3e6eb768253b3a8f4af576132b22f992e5b52f104682d1fdc825e1b9da",
-				"dweb:/ipfs/QmbBUsq2dTQq8mKxJ6oF532s9iggmukVWuWHDzadSCPcCw"
+				"bzz-raw://cf24f56ba0748110975f5ec844e97109421eeb7c9caa171e2bb7edc9e9fe4f18",
+				"dweb:/ipfs/QmPe7v52YPjxZyYaCtJvZxFSeQWAXSsnodWfwLdUJNCn6L"
 			]
 		}
 	},
