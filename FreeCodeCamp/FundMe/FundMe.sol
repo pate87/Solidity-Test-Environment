@@ -7,6 +7,8 @@ pragma solidity ^0.8.7;
 // set minimum funding value
 */
 
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+
 contract FundMe {
 
     uint256 public minimumUsd = 50;
@@ -42,6 +44,25 @@ contract FundMe {
         // fundsAmountOfAddress[funder] += amount;
         // totalFunds += amount;
     }
+
+    function getPrice() public view returns(int) {
+        // ABI 
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e);
+        // Contract Address 
+        // 0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e
+
+        (
+            /* uint80 roundID */,
+            int price,
+            /*uint startedAt*/,
+            /*uint timeStamp*/,
+            /*uint80 answeredInRound*/
+        ) = priceFeed.latestRoundData();
+
+        return price;
+    }
+
+    function getConversionRate() public {} 
 
     // withdraw funds
     // function withdraw(address to, uint amount) public onlyOwner {

@@ -1,56 +1,15 @@
 {
 	"compiler": {
-		"version": "0.8.13+commit.abaa5c0e"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_minimumFundsValue",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address payable",
-						"name": "funder",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
+				"inputs": [],
 				"name": "fund",
 				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "funderArray",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -74,7 +33,27 @@
 			},
 			{
 				"inputs": [],
-				"name": "totalFunds",
+				"name": "getConversionRate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPrice",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "minimumUsd",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -83,24 +62,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "withdraw",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -117,7 +78,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"FreeCodeCamp/FundMe/Fundme-SelfTryFirst.sol": "FundMe"
+			"FreeCodeCamp/FundMe/FundMe.sol": "FundMe"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -131,12 +92,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"FreeCodeCamp/FundMe/Fundme-SelfTryFirst.sol": {
-			"keccak256": "0x9f2a0d9935ff637933af23d1ecf0ea50319f5777aa8b0aa7544713108a7b120e",
+		"@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol": {
+			"keccak256": "0x6e6e4b0835904509406b070ee173b5bc8f677c19421b76be38aea3b1b3d30846",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5180e69ce42ebc8acc7332a730ae6d7c4d46c90ca236775920456c1440f8a1d8",
-				"dweb:/ipfs/QmS73K3Siv7ph6rGj14o3eoLErCUqYBUVUm4YjrPRUv8Yf"
+				"bzz-raw://b3beaa37ee61e4ab615e250fbf01601ae481de843fd0ef55e6b44fd9d5fff8a7",
+				"dweb:/ipfs/QmeZUVwd26LzK4Mfp8Zba5JbQNkZFfTzFu1A6FVMMZDg9c"
+			]
+		},
+		"FreeCodeCamp/FundMe/FundMe.sol": {
+			"keccak256": "0x6d3b7bca217556827007a078f2c7e0b8f554883c1fc983302d4b270cc970dd02",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c3d0e545a8ebf0f17f0366f4f688f6e3d65b34e1d41e1811c3d1f6be5751bae9",
+				"dweb:/ipfs/QmWzQ6TJkC3WaAWGZxfjTiCtDfStEohvYXh8k78d1j8AKD"
 			]
 		}
 	},
