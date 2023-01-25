@@ -6,13 +6,41 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract MyToken is ERC721, ERC721Enumerable, Ownable {
+contract ChatToken is ERC721, ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
     uint public price = 10**18;
 
     Counters.Counter private _tokenIdCounter;
 
     constructor() ERC721("Chat NFT", "CHAT") {}
+
+    // keep of total Message 
+    uint public totalMessages = 0;
+
+    struct message {
+        uint id;
+        address sendFrom;
+        uint nftId;
+        string sentMessage;
+        uint timestamp;
+    }
+
+    message[] public Messages;
+
+    // add Message 
+    function addMessage(string memory messageToSend, uint nftId) public returns(bool) {
+        // Check whether they own an NFT 
+        require(ownerOf(nftId) == msg.sender, "You don't own the NFT");
+        // Add the message 
+        Messages.push(message(totalMessages, msg.sender, nftId, messageToSend, block.timestamp));
+        totalMessages++;
+        return true; 
+    }
+
+    // get Message 
+    function getMessage(uint index) public view returns(message memory) {
+        return Messages[index];
+    }
 
     function _baseURI() internal pure override returns (string memory) {
         return "https://";
