@@ -6,6 +6,30 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "auctioncontract",
+				"outputs": [
+					{
+						"internalType": "contract auction",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "bid",
 				"outputs": [],
@@ -26,7 +50,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"bootcamp/week9/day_1_Auction_Hack.sol": "auction"
+			"bootcamp/week9/day_1_Auction_Hack.sol": "auctionhack"
 		},
 		"evmVersion": "london",
 		"libraries": {},
