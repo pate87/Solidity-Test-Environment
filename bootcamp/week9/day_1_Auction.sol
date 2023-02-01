@@ -27,7 +27,7 @@ contract auction {
         // check wether (person a bids 1 ETH) < (Person b bids 2 ETH) and person b bedomes the new highestBidder
         // If (current highestBidder) < (new highestBidder ) prviewes highestBidder gets his bid (tockens) back 
         payable(highestBidder).transfer(highestBid);
-
+        // Smart contracts, by default, cannot accept ether 
         highestBidder = msg.sender;
         highestBid = msg.value;
     }

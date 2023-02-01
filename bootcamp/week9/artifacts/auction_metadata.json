@@ -7,9 +7,93 @@
 		"abi": [
 			{
 				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
 				"name": "bid",
 				"outputs": [],
 				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "highestBid",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "highestBidder",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "running",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "seller",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "startAuction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "timeToEnd",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "win",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -26,7 +110,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"bootcamp/week9/day_1_Auction_Hack.sol": "auction"
+			"bootcamp/week9/day_1_Auction.sol": "auction"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -40,12 +124,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"bootcamp/week9/day_1_Auction_Hack.sol": {
-			"keccak256": "0xe47785ebfc73dbc2263e795ec440efccf7d466ba2997c19d738c801fa5912706",
+		"bootcamp/week9/day_1_Auction.sol": {
+			"keccak256": "0xc79047076584a7ce3429906677795bda03d2bd99bb04afb298f0ed111794537b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://fd43a430b2c3d65380ec399bfa9abd005b2eeb2822cad4d0af8229d02621caa7",
-				"dweb:/ipfs/QmWM23UrXhgVJAYmUFSivgjAQefphwYks88Qi8HtbZdgQ5"
+				"bzz-raw://c132c0aaf51b25838c2fec3f6c0eb622384c046c34d74eb32f782e5a36eeb49e",
+				"dweb:/ipfs/QmXBaDZjgHiXnZ7P5Gu1ywcYg73UK5CYmSHmsKAEWxn7cJ"
 			]
 		}
 	},
