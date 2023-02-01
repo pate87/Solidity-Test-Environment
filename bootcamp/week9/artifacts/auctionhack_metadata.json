@@ -17,6 +17,10 @@
 				"type": "constructor"
 			},
 			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
 				"inputs": [],
 				"name": "auctioncontract",
 				"outputs": [
@@ -35,6 +39,10 @@
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -65,11 +73,11 @@
 	},
 	"sources": {
 		"bootcamp/week9/day_1_Auction_Hack.sol": {
-			"keccak256": "0xe47785ebfc73dbc2263e795ec440efccf7d466ba2997c19d738c801fa5912706",
+			"keccak256": "0x69356157723ec34c09517d92c76e528d4bfc80c8e2474c6588cc3ca42a861059",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://fd43a430b2c3d65380ec399bfa9abd005b2eeb2822cad4d0af8229d02621caa7",
-				"dweb:/ipfs/QmWM23UrXhgVJAYmUFSivgjAQefphwYks88Qi8HtbZdgQ5"
+				"bzz-raw://60001e5975c842ba69617e740ee736893255134975b16f7ece90e5923110a8e5",
+				"dweb:/ipfs/QmSLg5ZUWwMdgEnKqpwCGn1mBW4BxvDs4oHBcNzG25QfvU"
 			]
 		}
 	},
