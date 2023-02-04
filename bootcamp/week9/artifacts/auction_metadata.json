@@ -7,9 +7,132 @@
 		"abi": [
 			{
 				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
 				"name": "bid",
 				"outputs": [],
 				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "deposits",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "highestBid",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "highestBidder",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "running",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "seller",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "startAuction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "takeOut",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "timeToEnd",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "win",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -26,7 +149,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"bootcamp/week9/day_1_Auction_Hack.sol": "auction"
+			"bootcamp/week9/day_2_Auction.sol": "auction"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -40,12 +163,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"bootcamp/week9/day_1_Auction_Hack.sol": {
-			"keccak256": "0xdf42d58d63713ffa20d448c5132474aa705051f25e2a0c561942fa0d25c20648",
+		"bootcamp/week9/day_2_Auction.sol": {
+			"keccak256": "0x3986beb091e51ac87740e8b4fdc4aac6bf2c5dbd9abcc6adea2da80702e64893",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1f01e4359fa32bb1054db1c44d410467b73c27bcd01ded88ad5b047ab4f559ef",
-				"dweb:/ipfs/QmZB6hWyZCXW31gpVntTKb5ZgM6FwtMmhHneg2uEMW2qcp"
+				"bzz-raw://aba712ad688cd308012f00a7d785f241357ff75343d989c236830a38fe7c4be2",
+				"dweb:/ipfs/Qmb6kTSUhcoVqVbyh4earAcaE7z28B35HNM7UQRS3jyZcE"
 			]
 		}
 	},
