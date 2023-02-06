@@ -41,8 +41,37 @@
 				"type": "function"
 			},
 			{
-				"stateMutability": "payable",
-				"type": "receive"
+				"inputs": [],
+				"name": "loop",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "loopCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "takeOut2",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -58,7 +87,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"bootcamp/week9/day_1_Auction_Hack.sol": "auctionhack"
+			"bootcamp/week9/day_2_Auction_Hack.sol": "auctionhack"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -72,12 +101,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"bootcamp/week9/day_1_Auction_Hack.sol": {
-			"keccak256": "0xa38a5024a16c755e4f8752952075df157da82f4bc975b8c1e37b82c72f43fd75",
+		"bootcamp/week9/day_2_Auction_Hack.sol": {
+			"keccak256": "0x817bf077cfc966e892686e0ec8453921d60c6f351b8f164821461a1fb7f5e4ae",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://97a782a08a573f254ca09b314bf06341e600b64cb210941e86361882467e6c3a",
-				"dweb:/ipfs/QmfGSNLKetiDDFgii7LNxjhTM6kxJEi1w3qQp5BFtAvGu4"
+				"bzz-raw://d2fe292c27bc25d1ea2a06eb99b04dbc0eef92248b860691de3254ebdc8e1331",
+				"dweb:/ipfs/QmTWRnbFagp1mUWJ8Ck1ydhoci2LwGgabS6rpmEJytciDD"
 			]
 		}
 	},

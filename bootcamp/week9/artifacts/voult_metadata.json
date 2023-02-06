@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bootcamp/week9/day_3_vault.sol": "voult"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bootcamp/week9/day_3_vault.sol": {
+			"keccak256": "0xdd298c6ecdc06cc28d37de64a65720d290c3bcf418ca7235a72fc15a8536a0b7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://eefceb2b918acf4a12e1be5b0045ec3dfb8ed71eb87151be219db957d8da6133",
+				"dweb:/ipfs/QmazHL7GFb8rEYQonFJPkiNkgH1WKS7TBMyfukGV8qy1Pg"
+			]
+		}
+	},
+	"version": 1
+}
