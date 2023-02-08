@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT 
-pragma solidity ^0.8.7;
+pragma solidity ^0.8.17;
 
 /*
 // Get funds from user
@@ -61,6 +61,13 @@ contract FundMe {
 
         return price;
     }
+
+    // Test a function from the Chainlink AggregatorV3Interface Interface 
+    function getVersion() public view returns(uint256) {
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e);
+        return priceFeed.version();
+    }
+
 
     function getConversionRate() public {} 
 

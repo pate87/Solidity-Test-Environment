@@ -53,6 +53,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "getVersion",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "minimumUsd",
 				"outputs": [
 					{
@@ -101,11 +114,11 @@
 			]
 		},
 		"FreeCodeCamp/FundMe/FundMe.sol": {
-			"keccak256": "0x6d3b7bca217556827007a078f2c7e0b8f554883c1fc983302d4b270cc970dd02",
+			"keccak256": "0xd8b0812b0e90f6176e8cefa0342851421c270f1219ca69cf9c133de6e12c9d63",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c3d0e545a8ebf0f17f0366f4f688f6e3d65b34e1d41e1811c3d1f6be5751bae9",
-				"dweb:/ipfs/QmWzQ6TJkC3WaAWGZxfjTiCtDfStEohvYXh8k78d1j8AKD"
+				"bzz-raw://fac6b5ea60df70ed8abd8f45d3b588a0703b774c70b04f887fbb2acf07961d59",
+				"dweb:/ipfs/QmeazvEzapS3KCccLwbdzWUb3QLk4nMhBQXEQm3n1TDqbs"
 			]
 		}
 	},
