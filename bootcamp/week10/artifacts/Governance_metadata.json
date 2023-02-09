@@ -1,0 +1,88 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "payable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "availableETH",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "memberHasVoted",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bootcamp/week10/day_2_creating_a_DAO_voting.sol": "Governance"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bootcamp/week10/day_2_creating_a_DAO_voting.sol": {
+			"keccak256": "0x6c766c51d7bf7340f25340d391433c74d0e6b5f9e51a1c7969024fc5860e3069",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ecb9e7f478aa5ce2402792b0b6dfefde4a3e916e6dad642cefc5378151118681",
+				"dweb:/ipfs/QmcmbxLhYJfDsKFZidag1PT5FpqSkDxK5ccNF8Gg1cwYzB"
+			]
+		}
+	},
+	"version": 1
+}
