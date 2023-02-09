@@ -31,9 +31,9 @@ contract Governance {
     // - ProposalData struct for general proposal data that contains:
     struct ProposalData {
         // - A timestamp when voting begins
-        uint vote_begins;
+        uint voteBegins;
         // - A timestamp when voting ends
-        uint vote_ends;
+        uint voteEnds;
         // - A counter for voties
         uint256 votesFor;
         // - A counter against votes
@@ -47,11 +47,11 @@ contract Governance {
         // - The ETH allocated to the grant
         uint256 ethGrant;
         // - The new ETH amount to be allocated to each grant proposal
-        uint256 allocated_amount;
+        uint256 newETHGrant;
     }
 
     // - ProposalData array (Each index of the array doubles as a proposal ID) - Creates an array from the struct object and set it into an array index ID
-    ProposalData[] private proposal;
+    ProposalData[] private proposals;
 
     // - Minimum number of votes required to pass a proposal (assign 5)
     uint256 private quorum = 5;
@@ -74,5 +74,54 @@ contract Governance {
     constructor() payable {
         availableETH = msg.value;
     }
+
+    // Implement the OpenZeppelin Governor contract state()
+    function state(uint256 propID) public view returns(ProposalState) {
+        
+        // Using storage saves gas against memory 
+        ProposalData storage proposal = proposals[propID];
+
+        // Creating a temp local var propState from the global var ProposalState
+        ProposalState propState = proposal.propState;
+
+        // Unassigned are any Proposals that have not been executed yet
+        // Checks in which state the proposal is currently if it's NOT Unassigned as default
+        if (propState != ProposalState.Unassigned) {
+            // Show the current state of the ProposalState
+            return propState;
+        }
+
+        // This contract havn't a Canceled state yet
+        // if (proposal.canceled) {
+        //     return ProposalState.Canceled;
+        // }
+
+        uint256 voteBegins = proposal.voteBegins;
+
+        // Proposals that don't exist will have a 0 voting begin date
+        if (voteBegins == 0) {
+            revert("Invalid ID");
+        }
+
+        // If the voting begin date is in the future, then voting has not begun yet
+        // The actually contract is using block.number which is propperly more acurate however because of thesting porposes this contract uses block.timestamp
+        // The block.timestamp can be controled from other users - this is only for testing
+        if (voteBegins >= block.timestamp) {
+            return ProposalState.Pending;
+        }
+
+        uint256 voteEnds = proposal.voteEnds;
+
+        // If the voting end date is in the future, then voting is still active
+        // The actually contract is using block.number which is propperly more acurate however because of thesting porposes this contract uses block.timestamp
+        // The block.timestamp can be controled from other users - this is only for testing
+        if (voteEnds >= block.timestamp) {
+            return ProposalState.Active;
+        }
+
+        // If none of the above is true, then voting is over and this Proposal is queued for execution
+        return ProposalState.Queued;
+    }
+
     
 }

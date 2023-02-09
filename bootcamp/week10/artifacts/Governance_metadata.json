@@ -46,6 +46,25 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "propID",
+						"type": "uint256"
+					}
+				],
+				"name": "state",
+				"outputs": [
+					{
+						"internalType": "enum Governance.ProposalState",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -76,11 +95,11 @@
 	},
 	"sources": {
 		"bootcamp/week10/day_2_creating_a_DAO_voting.sol": {
-			"keccak256": "0x6c766c51d7bf7340f25340d391433c74d0e6b5f9e51a1c7969024fc5860e3069",
+			"keccak256": "0xc30c51f2474d4dc95e6ee2a344650edadc70a2b2d75f8adccd43228cc98a81fe",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ecb9e7f478aa5ce2402792b0b6dfefde4a3e916e6dad642cefc5378151118681",
-				"dweb:/ipfs/QmcmbxLhYJfDsKFZidag1PT5FpqSkDxK5ccNF8Gg1cwYzB"
+				"bzz-raw://8b9f64236065919ff6438ce2858ac526c9880c56c2146510c91edf7248ed29f6",
+				"dweb:/ipfs/QmPjyL1CigWMEmw88KWbTojqJiN1FVwLSXwKhqZczUYtyf"
 			]
 		}
 	},
