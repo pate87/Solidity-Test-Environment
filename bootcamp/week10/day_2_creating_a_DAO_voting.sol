@@ -126,14 +126,14 @@ contract Governance {
     }
 
     // Function to check whether the quorum is reached
-    function _quorumReached(uint256 votesFor, uint256 votesAgainst) private view returns(bool quorumReached) {
+    function _quorumReached(uint256 votesFor, uint256 voteAgainst) private view returns(bool quorumReached) {
         // quorumReached is taking the sum from votesFor + votesAgainst and compare it with the actual (global number var) quroum - which must be > 5
-        quorumReached = (votesFor + votesAgainst >= quorum);
+        quorumReached = (votesFor + voteAgainst >= quorum);
     }
 
     // Function to check whether the ProposalState was Succeeded or Defeated
-    function _votesSucceeded(uint256 votesFor, uint256 votesAgainst) private pure returns(bool voteSucceeded) {
-        voteSucceeded = votesFor > votesAgainst; // 50% + 1 majority
+    function _votesSucceeded(uint256 votesFor, uint256 voteAgainst) private pure returns(bool voteSucceeded) {
+        voteSucceeded = votesFor > voteAgainst; // 50% + 1 majority
         /**
             ALTERNATIVE SYSTEMS
             2/3 Supermajority:
@@ -158,10 +158,10 @@ contract Governance {
 
         // Sets up a local var - for later caunting usage with the help of the linked temp var - proposal
         uint256 votesFor = proposal.votesFor;
-        uint256 votesAgainst = proposal.votesAgainst;
+        uint256 voteAgainst = proposal.votesAgainst;
 
         // Sets up a local var from the global _quorumReached() which checks whether the votes are raeached the minimum quotes needed
-        bool quorumReached = _quorumReached(votesFor, votesAgainst);
+        bool quorumReached = _quorumReached(votesFor, voteAgainst);
 
         // Checks whether quorum was NOT reached during the time of voting
         if(!quorumReached) {
@@ -169,7 +169,7 @@ contract Governance {
             return ProposalState.Expired;
         }
         // Checks with the global votesSucceeded() whether the proposal was succesfull
-        else if (_votesSucceeded(votesFor, votesAgainst)) {
+        else if (_votesSucceeded(votesFor, voteAgainst)) {
             return ProposalState.Succeeded;
         } 
         // If a proposale wasn't succesfull, then the proposal is Defeated
@@ -231,4 +231,47 @@ contract Governance {
         // The other arguments are changed in the @submitNewGrant()
         _submitProposal(ProposalType.IssueGrant, address(0), 0, newGrantAmount);
     }
+
+    //** VOTE **//
+
+    // Modifier to check whether the proposal is active and whether the member hasn't voted yet
+    modifier voteChecks(uint256 propID) {
+        // Check the @ProposalState
+        require(state(propID) == ProposalState.Active, "Proposal Inactive");
+        // Calls the global mapping @memberHasVoted
+        require(memberHasVoted[msg.sender][propID] == false, "Member already voted");
+        _;
+    }
+
+    // Submits a vote For or Against to Proposal propID
+    function _submitVote(uint256 propID, bool votedFor) private {
+        
+        // Sets up a local var - proposal from global var ProposalData
+        // Using storage saves gas against memory 
+        // storage links directly to the global var whereas memory creates a temp copy of the global var
+        ProposalData storage proposal = proposals[propID];
+
+        // Conditional statement to check whether the vote was For or Against the proposal  
+        if(votedFor) {
+            proposal.votesFor++;
+        } else {
+            proposal.votesAgainst++;
+        }
+
+        // Sets the mepping @memberHasVoted to true
+        memberHasVoted[msg.sender][propID] == true;
+    }
+
+    // Sets voteFor propID
+    function voteFor(uint256 propID) public voteChecks(propID) {
+        _submitVote(propID, true);
+    }
+    
+    // Sets votesAgainst propID
+    function votesAgainst(uint256 propID) public voteChecks(propID) {
+        _submitVote(propID, false);
+    }
+    
+    
+    
 }

@@ -91,6 +91,32 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "propID",
+						"type": "uint256"
+					}
+				],
+				"name": "voteFor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "propID",
+						"type": "uint256"
+					}
+				],
+				"name": "votesAgainst",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -121,11 +147,11 @@
 	},
 	"sources": {
 		"bootcamp/week10/day_2_creating_a_DAO_voting.sol": {
-			"keccak256": "0xb99f8c321f3ec7401da19d11e3f66db365cb3438cf0f4a4571bf3df26d103740",
+			"keccak256": "0xbae1cbf959412a8e57393085c9e7207658009cb02470105e745a028454cc398e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://69dd097e8dec2c82b7a000be734b3fc4ffb7535ec62e58bc3f60fcdfd687db08",
-				"dweb:/ipfs/QmTH7NPMdWSa6qoo1yYhY2e6SqgNzRbgfCqopSAopWq5nE"
+				"bzz-raw://ed3203ea3f01acd6c1d70c00173534f7c3fccdd27320cf73507fe829899476e1",
+				"dweb:/ipfs/QmPx79EFhVqbX1qvSwxygH9rKuU94erubr66aGP22TFypH"
 			]
 		}
 	},
