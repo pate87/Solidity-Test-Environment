@@ -126,14 +126,14 @@ contract Governance {
     }
 
     // Function to check whether the quorum is reached
-    function _quorumReached(uint256 votesFor, uint256 voteAgainst) private view returns(bool quorumReached) {
+    function _quorumReached(uint256 votesFor, uint256 votesAgainst) private view returns(bool quorumReached) {
         // quorumReached is taking the sum from votesFor + votesAgainst and compare it with the actual (global number var) quroum - which must be > 5
-        quorumReached = (votesFor + voteAgainst >= quorum);
+        quorumReached = (votesFor + votesAgainst >= quorum);
     }
 
     // Function to check whether the ProposalState was Succeeded or Defeated
-    function _votesSucceeded(uint256 votesFor, uint256 voteAgainst) private pure returns(bool voteSucceeded) {
-        voteSucceeded = votesFor > voteAgainst; // 50% + 1 majority
+    function _votesSucceeded(uint256 votesFor, uint256 votesAgainst) private pure returns(bool voteSucceeded) {
+        voteSucceeded = votesFor > votesAgainst; // 50% + 1 majority
         /**
             ALTERNATIVE SYSTEMS
             2/3 Supermajority:
@@ -158,10 +158,10 @@ contract Governance {
 
         // Sets up a local var - for later caunting usage with the help of the linked temp var - proposal
         uint256 votesFor = proposal.votesFor;
-        uint256 voteAgainst = proposal.votesAgainst;
+        uint256 votesAgainst = proposal.votesAgainst;
 
-        // Sets up a local var from the global _quorumReached() which checks whether the votes are raeached the minimum quotes needed
-        bool quorumReached = _quorumReached(votesFor, voteAgainst);
+        // Sets up a local var from _quorumReached() which checks whether the votes are raeached the minimum quotes needed
+        bool quorumReached = _quorumReached(votesFor, votesAgainst);
 
         // Checks whether quorum was NOT reached during the time of voting
         if(!quorumReached) {
@@ -169,7 +169,7 @@ contract Governance {
             return ProposalState.Expired;
         }
         // Checks with the global votesSucceeded() whether the proposal was succesfull
-        else if (_votesSucceeded(votesFor, voteAgainst)) {
+        else if (_votesSucceeded(votesFor, votesAgainst)) {
             return ProposalState.Succeeded;
         } 
         // If a proposale wasn't succesfull, then the proposal is Defeated
@@ -267,11 +267,85 @@ contract Governance {
         _submitVote(propID, true);
     }
     
-    // Sets votesAgainst propID
-    function votesAgainst(uint256 propID) public voteChecks(propID) {
+    // Sets voteAgainst propID
+    function voteAgainst(uint256 propID) public voteChecks(propID) {
         _submitVote(propID, false);
     }
     
-    
-    
+    //*** EXECUTE ***//
+
+    // The execute() is only doable if the voting has stopped
+    function execute(uint256 propID) public {
+
+        // Sets up a local var - proposal from global var ProposalData
+        // Using storage saves gas against memory 
+        // storage links directly to the global var whereas memory creates a temp copy of the global var
+        ProposalData storage proposal = proposals[propID];
+
+        // Sets up a local var - propState from global var ProposalState
+        ProposalState propState = state(propID);
+
+        // Checks whether the proposal state is ready to execute
+        // The execut() should only be callable if the proposal @ProposalState is Queued to check this we use the require statement
+        require(propState == ProposalState.Queued, "Proposal not queued for execution");
+
+        // Call @_tallyVotes() to check what the actual state of @ProposalState is and set it to a local var
+        propState = _tallyVotes(propID);
+
+        // Extracting the propType variable from proposal object and assigning it to a local variable propType
+        ProposalType propType = proposal.propType;
+
+
+        if(propState == ProposalState.Succeeded) {
+            if(propType == ProposalType.IssueGrant) {
+                // ISSUE GRANT
+            } else if(propType == ProposalType.ModifyGrantSize) {
+                // MODIFY GRANT SIZE
+            } 
+        } else {
+            // If the proposal not Succeeded 
+            if(propType == ProposalType.IssueGrant) {
+                // We send our ETH back into the tresury so the tresury is not going down - defent Reentrancy Attack
+                availableETH += proposal.ethGrant;
+            }
+        }
+            
+        // SET PROPOSAL STATE
+
+    }
+
+    // Internal function
+    function _setState(uint propID) private view returns(ProposalState) {
+            
+        // Sets up a local var - proposal from global var ProposalData
+        // Using storage saves gas against memory 
+        // storage links directly to the global var whereas memory creates a temp copy of the global var
+        ProposalData storage proposal = proposals[propID]; 
+        
+        // Create a local var and link it to the ProposalData struct votesFor votesAgainst
+        uint256 votesFor = proposal.votesFor;
+        uint256 votesAgainst = proposal.votesAgainst;
+        
+        //*** This code is equal to the @_tallyVotes() ***//
+
+        // Sets up a local var from _quorumReached() which checks whether the votes are raeached the minimum quotes needed
+        bool quorumReached = _quorumReached(votesFor, votesAgainst);
+        
+        // Checks whether quorum was NOT reached during the time of voting
+        if(!quorumReached) {
+            // If the time is over but no votes has been send to the proposal, then the proposal is Expired
+            return ProposalState.Expired;
+        }
+        // Checks with the global votesSucceeded() whether the proposal was succesfull
+        else if (_votesSucceeded(votesFor, votesAgainst)) {
+            return ProposalState.Succeeded;
+        } 
+        // If a proposale wasn't succesfull, then the proposal is Defeated
+        else {
+            return ProposalState.Defeated;
+        }
+
+    }
+
+
 }

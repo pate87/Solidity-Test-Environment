@@ -26,6 +26,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "propID",
+						"type": "uint256"
+					}
+				],
+				"name": "execute",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
@@ -100,7 +113,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "voteFor",
+				"name": "voteAgainst",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -113,7 +126,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "votesAgainst",
+				"name": "voteFor",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -147,11 +160,11 @@
 	},
 	"sources": {
 		"bootcamp/week10/day_2_creating_a_DAO_voting.sol": {
-			"keccak256": "0xbae1cbf959412a8e57393085c9e7207658009cb02470105e745a028454cc398e",
+			"keccak256": "0xa1589621a9bde2ee7b48c7c0a2a94585536aa6d60e5f85141ceaf5ba1f6a4ee9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ed3203ea3f01acd6c1d70c00173534f7c3fccdd27320cf73507fe829899476e1",
-				"dweb:/ipfs/QmPx79EFhVqbX1qvSwxygH9rKuU94erubr66aGP22TFypH"
+				"bzz-raw://7d3cb720a792de3df4bb0d6b7d327bb56685cafe6025fdfbd05f36e356c73ee7",
+				"dweb:/ipfs/QmaHfMzVDFQSEuiupR2yBaYhRYtnVJvqfFhjH1QYf7HJ81"
 			]
 		}
 	},
