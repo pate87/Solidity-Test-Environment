@@ -65,6 +65,32 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newGrantAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "submitNewAmountChange",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					}
+				],
+				"name": "submitNewGrant",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -95,11 +121,11 @@
 	},
 	"sources": {
 		"bootcamp/week10/day_2_creating_a_DAO_voting.sol": {
-			"keccak256": "0x7fff4eee68599522e4b4ba852a736887be42b38205da4cfc18800445059195f4",
+			"keccak256": "0xb99f8c321f3ec7401da19d11e3f66db365cb3438cf0f4a4571bf3df26d103740",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c56395898f3a3d2951d4f2bb10114f7ccb33e2928b70da1d7b5ddda0bbeab4d7",
-				"dweb:/ipfs/QmX1b8waLqFwi4VM9ZazTY7jFYwzUFNHGLyJKckjk6Kc37"
+				"bzz-raw://69dd097e8dec2c82b7a000be734b3fc4ffb7535ec62e58bc3f60fcdfd687db08",
+				"dweb:/ipfs/QmTH7NPMdWSa6qoo1yYhY2e6SqgNzRbgfCqopSAopWq5nE"
 			]
 		}
 	},

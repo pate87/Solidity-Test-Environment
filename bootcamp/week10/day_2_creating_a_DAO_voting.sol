@@ -178,5 +178,57 @@ contract Governance {
         }
     }
 
-    
+    //*** PROPOSE ***//
+
+    // Internal function to send the information to the @proposals array, so we can later call the ID with the atached information from this function
+    function _submitProposal(
+        ProposalType propType,
+        address recipient,
+        uint256 amount,
+        uint256 newGrantAmount
+    ) private {
+        uint256 votingBeginDate = block.timestamp + reviewPeriod;
+        // Copy all the struct variables and set it into a new copy with the arguments
+        // This time we need a memory because the other var doesn't exist yet
+        ProposalData memory newProposal = ProposalData ({
+            voteBegins: votingBeginDate,
+            voteEnds: votingBeginDate + votingPeriod,
+            votesFor: 0,
+            votesAgainst: 0,
+            propState: ProposalState.Unassigned,
+            propType: propType, // ProposalType.IssueGrant
+            recepient: recipient,
+            ethGrant: amount,
+            newETHGrant: newGrantAmount
+        });
+
+        // Push the newPropsal to the array @proposals and give each proposal an ID to call it in the array
+        proposals.push(newProposal);
+    }
+
+    // Submits a new grant request
+    function submitNewGrant(address recipient) public {
+
+        // To save gas fees we create a temp local var from our global var
+        uint256 _grantAmount = grantAmount;
+        
+        // Check whether glob var @availableETH >= _grantAmount
+        require(availableETH >= _grantAmount, "Insuficient ETH");
+
+        // Calculates the new @availableETH 
+        availableETH -= _grantAmount;
+
+        // - Calls the @_submitProposal():
+        // - the new grantAmount becomes 0 because we calculate it in the @submitNewAmountChange()
+        _submitProposal(ProposalType.IssueGrant, recipient, _grantAmount, 0);
+    }
+
+    // Submiths a new grant amount change request
+    function submitNewAmountChange(uint256 newGrantAmount) public {
+        require(newGrantAmount > 0, "Invalid amount");
+
+        // - Calls the @_submitProposal(): and call it with 0 input argument besides of the the @newGrantAmount
+        // The other arguments are changed in the @submitNewGrant()
+        _submitProposal(ProposalType.IssueGrant, address(0), 0, newGrantAmount);
+    }
 }
