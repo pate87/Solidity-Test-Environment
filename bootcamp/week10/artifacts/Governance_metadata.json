@@ -95,11 +95,11 @@
 	},
 	"sources": {
 		"bootcamp/week10/day_2_creating_a_DAO_voting.sol": {
-			"keccak256": "0xc30c51f2474d4dc95e6ee2a344650edadc70a2b2d75f8adccd43228cc98a81fe",
+			"keccak256": "0x7fff4eee68599522e4b4ba852a736887be42b38205da4cfc18800445059195f4",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8b9f64236065919ff6438ce2858ac526c9880c56c2146510c91edf7248ed29f6",
-				"dweb:/ipfs/QmPjyL1CigWMEmw88KWbTojqJiN1FVwLSXwKhqZczUYtyf"
+				"bzz-raw://c56395898f3a3d2951d4f2bb10114f7ccb33e2928b70da1d7b5ddda0bbeab4d7",
+				"dweb:/ipfs/QmX1b8waLqFwi4VM9ZazTY7jFYwzUFNHGLyJKckjk6Kc37"
 			]
 		}
 	},

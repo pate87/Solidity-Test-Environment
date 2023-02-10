@@ -78,7 +78,9 @@ contract Governance {
     // Implement the OpenZeppelin Governor contract state()
     function state(uint256 propID) public view returns(ProposalState) {
         
+        // Sets up a local var - proposal from global var ProposalData
         // Using storage saves gas against memory 
+        // storage links directly to the global var whereas memory creates a temp copy of the global var
         ProposalData storage proposal = proposals[propID];
 
         // Creating a temp local var propState from the global var ProposalState
@@ -121,6 +123,59 @@ contract Governance {
 
         // If none of the above is true, then voting is over and this Proposal is queued for execution
         return ProposalState.Queued;
+    }
+
+    // Function to check whether the quorum is reached
+    function _quorumReached(uint256 votesFor, uint256 votesAgainst) private view returns(bool quorumReached) {
+        // quorumReached is taking the sum from votesFor + votesAgainst and compare it with the actual (global number var) quroum - which must be > 5
+        quorumReached = (votesFor + votesAgainst >= quorum);
+    }
+
+    // Function to check whether the ProposalState was Succeeded or Defeated
+    function _votesSucceeded(uint256 votesFor, uint256 votesAgainst) private pure returns(bool voteSucceeded) {
+        voteSucceeded = votesFor > votesAgainst; // 50% + 1 majority
+        /**
+            ALTERNATIVE SYSTEMS
+            2/3 Supermajority:
+            voteSucceeded = votesFor >= votesAgainst * 2;
+
+            3/5 Majority
+            voteSucceeded = votesFor * 2 >= votesAgainst * 3;
+
+            X/Y Majority
+            voteSucceeded = votesFor * (X - Y) >= votesAgainst * X;
+        */
+
+    }
+
+    // Counting the votes 
+    function _tallyVotes(uint256 propID) private view returns(ProposalState) {
+
+        // Sets up a local var - proposal from global var ProposalData
+        // Using storage saves gas against memory 
+        // storage links directly to the global var whereas memory creates a temp copy of the global var
+        ProposalData storage proposal = proposals[propID];
+
+        // Sets up a local var - for later caunting usage with the help of the linked temp var - proposal
+        uint256 votesFor = proposal.votesFor;
+        uint256 votesAgainst = proposal.votesAgainst;
+
+        // Sets up a local var from the global _quorumReached() which checks whether the votes are raeached the minimum quotes needed
+        bool quorumReached = _quorumReached(votesFor, votesAgainst);
+
+        // Checks whether quorum was NOT reached during the time of voting
+        if(!quorumReached) {
+            // If the time is over but no votes has been send to the proposal, then the proposal is Expired
+            return ProposalState.Expired;
+        }
+        // Checks with the global votesSucceeded() whether the proposal was succesfull
+        else if (_votesSucceeded(votesFor, votesAgainst)) {
+            return ProposalState.Succeeded;
+        } 
+        // If a proposale wasn't succesfull, then the proposal is Defeated
+        else {
+            return ProposalState.Defeated;
+        }
     }
 
     
