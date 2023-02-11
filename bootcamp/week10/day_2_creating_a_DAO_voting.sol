@@ -39,8 +39,10 @@ contract Governance {
         // - A counter against votes
         uint256 votesAgainst;
         // - A ProposalStatus enum marking the statee of the proposal
+        // Creates temp struct var propState from the actual ProposalState
         ProposalState propState;
         // - A ProposalType enum so execute() knows which function to call
+        // Creates temp struct var propType from the actual ProposalType
         ProposalType propType;
         // - The grant recepient's address
         address recepient;
@@ -50,7 +52,7 @@ contract Governance {
         uint256 newETHGrant;
     }
 
-    // - ProposalData array (Each index of the array doubles as a proposal ID) - Creates an array from the struct object and set it into an array index ID
+    // The proposals array is an array of ProposalData objects, and each index in the array doubles as a proposal ID.
     ProposalData[] private proposals;
 
     // - Minimum number of votes required to pass a proposal (assign 5)
@@ -76,24 +78,28 @@ contract Governance {
     }
 
     // Implement the OpenZeppelin Governor contract state()
+    /*  The state function returns the current state of a proposal based on the propID passed as a parameter. 
+        The function uses the ProposalData object stored in the proposals array with the same propID to determine the state.
+    */
     function state(uint256 propID) public view returns(ProposalState) {
         
         // Sets up a local var - proposal from global var ProposalData
         // Using storage saves gas against memory 
         // storage links directly to the global var whereas memory creates a temp copy of the global var
+        // Also we copy everything from the @proposals array with the attached ID and enter it in the new local var proposal
         ProposalData storage proposal = proposals[propID];
+        // proposal is now an object which has all the information from the @ProposalData and the @proposal array ID
 
-        // Creating a temp local var propState from the global var ProposalState
+        // Create a new var poropState and asign the proposal object and the @ProposalState to it
         ProposalState propState = proposal.propState;
 
-        // Unassigned are any Proposals that have not been executed yet
-        // Checks in which state the proposal is currently if it's NOT Unassigned as default
+        // Checks in which state the proposal is currently if it's NOT Unassigned as it is by default
         if (propState != ProposalState.Unassigned) {
-            // Show the current state of the ProposalState
+            // Return the current state of the ProposalState and set it to the propState 
             return propState;
         }
 
-        // This contract havn't a Canceled state yet
+        // The code doesn't have a canceled field or any logic for canceling the propose yet
         // if (proposal.canceled) {
         //     return ProposalState.Canceled;
         // }
@@ -102,26 +108,50 @@ contract Governance {
 
         // Proposals that don't exist will have a 0 voting begin date
         if (voteBegins == 0) {
-            revert("Invalid ID");
+            
+            // revert("Invalid ID");
+
         }
 
+        /*
+            Updated code instead using if we use require 
+        */
+        // require(voteBegins < 0, "Invalid ID");
+
         // If the voting begin date is in the future, then voting has not begun yet
-        // The actually contract is using block.number which is propperly more acurate however because of thesting porposes this contract uses block.timestamp
-        // The block.timestamp can be controled from other users - this is only for testing
-        if (voteBegins >= block.timestamp) {
+        // The actually contract is using block.number which is properly more acurate however because of thesting purposes this contract uses block.timestamp
+        // block.timestamp may not be accurate because it can be manipulated by miners.
+        if (voteBegins >= block.timestamp && voteBegins != 0) {
+            // Sets the ProposalState to Pending
             return ProposalState.Pending;
         }
+
+        /*
+            Updated code instead using if we use require 
+        */
+        // require(voteBegins < block.timestamp || voteBegins == 0, "Voting has not begun yet");
+        // // Sets the ProposalState to Pending
+        // ProposalState.Pending;
 
         uint256 voteEnds = proposal.voteEnds;
 
         // If the voting end date is in the future, then voting is still active
-        // The actually contract is using block.number which is propperly more acurate however because of thesting porposes this contract uses block.timestamp
-        // The block.timestamp can be controled from other users - this is only for testing
-        if (voteEnds >= block.timestamp) {
+        // The actually contract is using block.number which is properly more acurate however because of thesting purposes this contract uses block.timestamp
+        // block.timestamp may not be accurate because it can be manipulated by miners.
+        if (voteEnds >= block.timestamp && voteEnds != 0) {
+            // Sets the ProposalState to Active
             return ProposalState.Active;
         }
 
+        /*
+            Updated code instead using if we use require 
+        */
+        // require(voteEnds < block.timestamp || voteEnds == 0, "Voting is still active");
+        // // Sets the ProposalState to Active
+        // ProposalState.Active;
+
         // If none of the above is true, then voting is over and this Proposal is queued for execution
+        // Sets the ProposalState to Queued and calls the @execute()
         return ProposalState.Queued;
     }
 
@@ -154,6 +184,7 @@ contract Governance {
         // Sets up a local var - proposal from global var ProposalData
         // Using storage saves gas against memory 
         // storage links directly to the global var whereas memory creates a temp copy of the global var
+        // Also we copy everything from the @proposals array with the attached ID and enter it in the new local var proposal
         ProposalData storage proposal = proposals[propID];
 
         // Sets up a local var - for later caunting usage with the help of the linked temp var - proposal
@@ -165,14 +196,14 @@ contract Governance {
 
         // Checks whether quorum was NOT reached during the time of voting
         if(!quorumReached) {
-            // If the time is over but no votes has been send to the proposal, then the proposal is Expired
+            // If the time is over but no votes has been send to the proposal, then the proposal is Expired - return Expired
             return ProposalState.Expired;
         }
-        // Checks with the global votesSucceeded() whether the proposal was succesfull
+        // Checks with the global votesSucceeded() whether the proposal was succesfull - return Succeeded
         else if (_votesSucceeded(votesFor, votesAgainst)) {
             return ProposalState.Succeeded;
         } 
-        // If a proposale wasn't succesfull, then the proposal is Defeated
+        // If a proposale wasn't succesfull, then the proposal is Defeated - return Defeated
         else {
             return ProposalState.Defeated;
         }
@@ -249,6 +280,7 @@ contract Governance {
         // Sets up a local var - proposal from global var ProposalData
         // Using storage saves gas against memory 
         // storage links directly to the global var whereas memory creates a temp copy of the global var
+        // Also we copy everything from the @proposals array with the attached ID and enter it in the new local var proposal
         ProposalData storage proposal = proposals[propID];
 
         // Conditional statement to check whether the vote was For or Against the proposal  
@@ -280,6 +312,7 @@ contract Governance {
         // Sets up a local var - proposal from global var ProposalData
         // Using storage saves gas against memory 
         // storage links directly to the global var whereas memory creates a temp copy of the global var
+        // Also we copy everything from the @proposals array with the attached ID and enter it in the new local var proposal
         ProposalData storage proposal = proposals[propID];
 
         // Sets up a local var - propState from global var ProposalState
@@ -315,37 +348,106 @@ contract Governance {
     }
 
     // Internal function
-    function _setState(uint propID) private view returns(ProposalState) {
+    function _setState(uint propID) private {
             
         // Sets up a local var - proposal from global var ProposalData
         // Using storage saves gas against memory 
         // storage links directly to the global var whereas memory creates a temp copy of the global var
+        // Also we copy everything from the @proposals array with the attached ID and enter it in the new local var proposal
         ProposalData storage proposal = proposals[propID]; 
         
         // Create a local var and link it to the ProposalData struct votesFor votesAgainst
         uint256 votesFor = proposal.votesFor;
         uint256 votesAgainst = proposal.votesAgainst;
         
-        //*** This code is equal to the @_tallyVotes() ***//
+        //*** This code is equal to the @_tallyVotes() expect we asign the proposal state and not returning them  ***//
 
         // Sets up a local var from _quorumReached() which checks whether the votes are raeached the minimum quotes needed
         bool quorumReached = _quorumReached(votesFor, votesAgainst);
         
         // Checks whether quorum was NOT reached during the time of voting
         if(!quorumReached) {
-            // If the time is over but no votes has been send to the proposal, then the proposal is Expired
-            return ProposalState.Expired;
+            // If the time is over but no votes has been send to the proposal, then the proposal is Expired - asign Expired
+            proposal.propState = ProposalState.Expired;
         }
-        // Checks with the global votesSucceeded() whether the proposal was succesfull
+        // Checks with the global votesSucceeded() whether the proposal was succesfull - asign Succeeded
         else if (_votesSucceeded(votesFor, votesAgainst)) {
-            return ProposalState.Succeeded;
+            proposal.propState = ProposalState.Succeeded;
         } 
-        // If a proposale wasn't succesfull, then the proposal is Defeated
+        // If a proposale wasn't succesfull, then the proposal is Defeated - asign Defeated
         else {
-            return ProposalState.Defeated;
+            proposal.propState = ProposalState.Defeated;
         }
 
     }
 
+    //*** GETTER FUNCTIONS ****//
+
+    // Get the length length of the array @proposals - instead of creating a state var which cost gas we use this function
+    function getTotalProposals() public view returns(uint256 totalProposals) {
+        totalProposals = proposals.length;
+    }
+
+    /*
+        The getProposal function returns the information about a proposal
+        based on the propID passed as a parameter. 
+        The function creates a new local ProposalData object with the information from the proposals array
+        and sets the state of the proposal based on the result of calling the state function.
+    */
+    function getProposal(uint256 propID) public view returns(ProposalData memory proposal) {
+        
+        // Creates a new local ProposalData object with the information from the proposals array
+        proposal = proposals[propID];
+
+        // @propState is the var from @ProposalData struct
+        // calling the state function
+        proposal.propState = state(propID);
+
+        // Show the @ProposalState ID number which gets returned from the state()
+        return proposal;
+
+    }
+
+    //*** TEST FUNCTIONS ***//
+
+    function getTimestamp() public view returns(uint256 timestamp) {
+        return block.timestamp;
+    }
+
+    function getReviewTimeRemaining(uint256 propID) public view returns(uint256 timeRemaining) {
+
+        // Sets up a local var - proposal from global var ProposalData
+        // Using storage saves gas against memory 
+        // storage links directly to the global var whereas memory creates a temp copy of the global var
+        // Also we copy everything from the @proposals array with the attached ID and enter it in the new local var proposal
+        ProposalData storage proposal = proposals[propID]; 
+
+        if(state(propID) == ProposalState.Pending) {
+            // Calculates the remaining time 
+            return proposal.voteBegins - getTimestamp();
+        } else {
+            return 0;
+        }
+    }
+
+    function getVoteTimeRemaining(uint256 propID) public view returns(uint256 timeRemaining) {
+
+        // Sets up a local var - proposal from global var ProposalData
+        // Using storage saves gas against memory 
+        // storage links directly to the global var whereas memory creates a temp copy of the global var
+        // Also we copy everything from the @proposals array with the attached ID and enter it in the new local var proposal
+        ProposalData storage proposal = proposals[propID]; 
+
+        if(state(propID) == ProposalState.Pending) {
+            // Calculates the remaining time 
+            return proposal.voteBegins - getTimestamp();
+        } else {
+            return 0;
+        }
+    }
+
+    function getQuorum() public view returns(uint256) {
+        return quorum;
+    }
 
 }
