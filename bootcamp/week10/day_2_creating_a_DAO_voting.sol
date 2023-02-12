@@ -44,8 +44,8 @@ contract Governance {
         // - A ProposalType enum so execute() knows which function to call
         // Creates temp struct var propType from the actual ProposalType
         ProposalType propType;
-        // - The grant recepient's address
-        address recepient;
+        // - The grant recipient's address
+        address recipient;
         // - The ETH allocated to the grant
         uint256 ethGrant;
         // - The new ETH amount to be allocated to each grant proposal
@@ -63,12 +63,12 @@ contract Governance {
     mapping(address => mapping(uint256 => bool)) public memberHasVoted;
 
     // - Timelock duration for proposal review period (assign to 30 seconds for testing proposes)
-    uint256 reviewPeriod = 30 seconds;
+    uint256 reviewPeriod = 1 minutes;
     // - Timelock duration for proposal voting period (assign to 1 minutes for testing proposes)
     uint256 votingPeriod = 1 minutes;
 
     // - Size of each ETH grant (assign 1 ETH)
-    uint256 grantAmount = 1 ether;
+    uint256 public grantAmount = 1 ether;
 
     // - Balance of ETH available for a new proposal
     uint256 public availableETH;
@@ -109,7 +109,7 @@ contract Governance {
         // Proposals that don't exist will have a 0 voting begin date
         if (voteBegins == 0) {
             
-            // revert("Invalid ID");
+            revert("Invalid ID");
 
         }
 
@@ -121,7 +121,7 @@ contract Governance {
         // If the voting begin date is in the future, then voting has not begun yet
         // The actually contract is using block.number which is properly more acurate however because of thesting purposes this contract uses block.timestamp
         // block.timestamp may not be accurate because it can be manipulated by miners.
-        if (voteBegins >= block.timestamp && voteBegins != 0) {
+        if (voteBegins >= block.timestamp) {
             // Sets the ProposalState to Pending
             return ProposalState.Pending;
         }
@@ -138,7 +138,7 @@ contract Governance {
         // If the voting end date is in the future, then voting is still active
         // The actually contract is using block.number which is properly more acurate however because of thesting purposes this contract uses block.timestamp
         // block.timestamp may not be accurate because it can be manipulated by miners.
-        if (voteEnds >= block.timestamp && voteEnds != 0) {
+        if (voteEnds >= block.timestamp) {
             // Sets the ProposalState to Active
             return ProposalState.Active;
         }
@@ -228,7 +228,7 @@ contract Governance {
             votesAgainst: 0,
             propState: ProposalState.Unassigned,
             propType: propType, // ProposalType.IssueGrant
-            recepient: recipient,
+            recipient: recipient,
             ethGrant: amount,
             newETHGrant: newGrantAmount
         });
@@ -244,7 +244,7 @@ contract Governance {
         uint256 _grantAmount = grantAmount;
         
         // Check whether glob var @availableETH >= _grantAmount
-        require(availableETH >= _grantAmount, "Insuficient ETH");
+        require(availableETH >= _grantAmount, "Insufficient ETH");
 
         // Calculates the new @availableETH 
         availableETH -= _grantAmount;
@@ -257,17 +257,18 @@ contract Governance {
     // Submiths a new grant amount change request
     function submitNewAmountChange(uint256 newGrantAmount) public {
         require(newGrantAmount > 0, "Invalid amount");
-
+     
         // - Calls the @_submitProposal(): and call it with 0 input argument besides of the the @newGrantAmount
         // The other arguments are changed in the @submitNewGrant()
-        _submitProposal(ProposalType.IssueGrant, address(0), 0, newGrantAmount);
+        _submitProposal(ProposalType.ModifyGrantSize, address(0), 0, newGrantAmount);
+     
     }
 
     //** VOTE **//
 
     // Modifier to check whether the proposal is active and whether the member hasn't voted yet
     modifier voteChecks(uint256 propID) {
-        // Check the @ProposalState
+        // Check the current @ProposalState
         require(state(propID) == ProposalState.Active, "Proposal Inactive");
         // Calls the global mapping @memberHasVoted
         require(memberHasVoted[msg.sender][propID] == false, "Member already voted");
@@ -291,7 +292,7 @@ contract Governance {
         }
 
         // Sets the mepping @memberHasVoted to true
-        memberHasVoted[msg.sender][propID] == true;
+        memberHasVoted[msg.sender][propID] = true;
     }
 
     // Sets voteFor propID
@@ -332,8 +333,10 @@ contract Governance {
         if(propState == ProposalState.Succeeded) {
             if(propType == ProposalType.IssueGrant) {
                 // ISSUE GRANT
+                _issueGrant(propID);
             } else if(propType == ProposalType.ModifyGrantSize) {
                 // MODIFY GRANT SIZE
+                _modifyGrantSize(propID);
             } 
         } else {
             // If the proposal not Succeeded 
@@ -344,6 +347,42 @@ contract Governance {
         }
             
         // SET PROPOSAL STATE
+        _setState(propID);
+
+    }
+
+    function _issueGrant(uint256 propID) private {
+
+        // Sets up a local var - proposal from global var ProposalData
+        // Using storage saves gas against memory 
+        // storage links directly to the global var whereas memory creates a temp copy of the global var
+        // Also we copy everything from the @proposals array with the attached ID and enter it in the new local var proposal
+        ProposalData storage proposal = proposals[propID]; 
+
+        // Sends the amount from proposal.ethGrant to recepient
+        // Because the function is private we don't need to check for Reentrancy Attack
+        (bool success, ) = proposal.recipient.call{value: proposal.ethGrant}("");
+
+        // If the transfer failed recicle the ethGrant and add it to availableETH
+        if(!success) {
+            availableETH += proposal.ethGrant;
+        }
+    }
+
+    function _modifyGrantSize(uint256 propID) private {
+
+        // Sets up a local var - proposal from global var ProposalData
+        // Using storage saves gas against memory
+        /* 
+            This is the same as wrinting 
+            grantAmount = proposal[propID].newETHGrant 
+        */ 
+        // storage links directly to the global var whereas memory creates a temp copy of the global var
+        // Also we copy everything from the @proposals array with the attached ID and enter it in the new local var proposal
+        ProposalData storage proposal = proposals[propID]; 
+        
+        // Updates the grantAmount from the newETHGrant
+        grantAmount = proposal.newETHGrant; 
 
     }
 
@@ -438,9 +477,9 @@ contract Governance {
         // Also we copy everything from the @proposals array with the attached ID and enter it in the new local var proposal
         ProposalData storage proposal = proposals[propID]; 
 
-        if(state(propID) == ProposalState.Pending) {
+        if(state(propID) == ProposalState.Active) {
             // Calculates the remaining time 
-            return proposal.voteBegins - getTimestamp();
+            return proposal.voteEnds - getTimestamp();
         } else {
             return 0;
         }
