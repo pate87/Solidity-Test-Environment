@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"bootcamp/week10/day_3_DAO_Membership_ERC20.sol": "Membership"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"bootcamp/week10/day_3_DAO_Membership_ERC20.sol": {
+			"keccak256": "0x50ea3149cc75ff3ce2da398da4d654cfc17a0473756be5d94f1222a7c07d50e7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2d2ab5e5fc6acf5122e21088533e486dc8e3e13b59393ce359e5428a3c639758",
+				"dweb:/ipfs/QmShXGng8LLdrcX3jNiHvJu3CxaPeWArGDxyJWoRtHXDf5"
+			]
+		}
+	},
+	"version": 1
+}
