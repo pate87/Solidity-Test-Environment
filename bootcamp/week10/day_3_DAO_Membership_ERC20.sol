@@ -137,7 +137,6 @@ contract MembershipERC20 is ERC20("DAOToekn", "DAO") {
     }
 
     // Voting Power: Several models to choose from
-
     function memberVotingPower(address account) public view returns(uint256 votingPower) {
         
         /*
@@ -198,6 +197,21 @@ contract MembershipERC20 is ERC20("DAOToekn", "DAO") {
             } 
         } else if (y != 0) {
             z = 1;
+        }
+    }
+
+    /*
+        INPUTS FOR TESTING
+
+        AMOUNTS: [1, 25, 100, 2500, 3000]
+        MEMBERS: ["0x5B38Da6a701c568545dCfcB03FcB875f56beddC4", "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2", "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db", "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB", "0x617F2E2fD72FD9D5503197092aC168c91465E7f2"]
+    */
+    constructor(uint256[] memory amounts, address[] memory members) {
+        super; // 
+        // Loops through the amounts and members
+        for(uint i = 0; i < members.length; i++) {
+            // Calls the _mint() and decimals() from the OpenZeppelin ERC20 contract and multiply it
+            _mint(members[i], amounts[i] * 10 ** decimals());
         }
     }
 
