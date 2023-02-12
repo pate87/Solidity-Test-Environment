@@ -39,6 +39,162 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "propID",
+						"type": "uint256"
+					}
+				],
+				"name": "getProposal",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "voteBegins",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "voteEnds",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "votesFor",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "votesAgainst",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum Governance.ProposalState",
+								"name": "propState",
+								"type": "uint8"
+							},
+							{
+								"internalType": "enum Governance.ProposalType",
+								"name": "propType",
+								"type": "uint8"
+							},
+							{
+								"internalType": "address",
+								"name": "recipient",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "ethGrant",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "newETHGrant",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Governance.ProposalData",
+						"name": "proposal",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getQuorum",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "propID",
+						"type": "uint256"
+					}
+				],
+				"name": "getReviewTimeRemaining",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "timeRemaining",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getTimestamp",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getTotalProposals",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "totalProposals",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "propID",
+						"type": "uint256"
+					}
+				],
+				"name": "getVoteTimeRemaining",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "timeRemaining",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "grantAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
@@ -145,7 +301,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"bootcamp/week10/day_2_creating_a_DAO_voting.sol": "Governance"
+			"bootcamp/week10/day_2_DAO_Governance.sol": "Governance"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -159,12 +315,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"bootcamp/week10/day_2_creating_a_DAO_voting.sol": {
-			"keccak256": "0xa1589621a9bde2ee7b48c7c0a2a94585536aa6d60e5f85141ceaf5ba1f6a4ee9",
+		"bootcamp/week10/day_2_DAO_Governance.sol": {
+			"keccak256": "0xdb5729f7efd4c0d41b79c1cf6641df41a8799fa818b85e8b6aa0d4545c210eb6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7d3cb720a792de3df4bb0d6b7d327bb56685cafe6025fdfbd05f36e356c73ee7",
-				"dweb:/ipfs/QmaHfMzVDFQSEuiupR2yBaYhRYtnVJvqfFhjH1QYf7HJ81"
+				"bzz-raw://a6e0056296e19ecba2eb690461e55ff5fe0590e4e1022965b47d82dbdc0e4445",
+				"dweb:/ipfs/QmdwmKqEEzooshA32R4WZifckPtvcJPNnmxT9cTTqsnVek"
 			]
 		}
 	},
