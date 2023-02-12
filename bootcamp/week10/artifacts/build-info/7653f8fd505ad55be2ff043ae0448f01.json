@@ -1,0 +1,83 @@
+{
+	"id": "7653f8fd505ad55be2ff043ae0448f01",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.17",
+	"solcLongVersion": "0.8.17+commit.8df45f5f",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"bootcamp/week10/day_3_DAO_Membership_ERC20.sol": {
+				"content": "/*\n    Today we will explore how to use blockchain assets to track DAO membership and voting power.\n\n    This contract creates governance tokens for use by the Governance contract to establish membership and voting power for the DAO members.\n    \n    We will demonstrate using ERC20, ERC721, and ERC1155 contracts for establishing DAO membership, providing a well-rounded idea of how to use blockchain assets \n    to form Decentralized Autonomous Organizations.\n\n    Recall that membership in a DAO is often established by owning a blockchain asset, which the Governance contract can check for in a user's wallet. \n    Token-based models use transferable tokens, while participation and reputation systems use non-transferable tokens or points systems to track user participation \n    and reputation.\n\n    Our Membership contract will include:\n        - totalMembers variable for tracking total number of DAO members\n            - Called by Governance. _quorumReached\n        - memberVotingPower function for returning number of votes assigned for each holder\n            - Called by Governance._submitVote\n            - Demonstrate both one-vote-per-token and quadratic voting\n\n    We will need to make a few modifications to the Governance contract as well:\n        - We will need to add a memberCount property to the Proposaldata struct to track how many members voted on the proposal.\n        - We will improve our constructor to take inputs for state variables _quorumReached must refer to the total number of DAO members\n        - We will create an onlyMembers modifier to check if a caller is a DAO member\n            - We will implement the new modifier on all member-only functions\n        - We will have _submitVote call Membership.memberVotingPower to determine how many votes to apply\n\n    We will discuss:\n        - Implementing a burn voting model\n        - Universal function call syntax used by Governor\n*/"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			}
+		}
+	},
+	"output": {
+		"errors": [
+			{
+				"component": "general",
+				"errorCode": "1878",
+				"formattedMessage": "Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing \"SPDX-License-Identifier: <SPDX-License>\" to each source file. Use \"SPDX-License-Identifier: UNLICENSED\" for non-open-source code. Please see https://spdx.org for more information.\n--> bootcamp/week10/day_3_DAO_Membership_ERC20.sol\n\n",
+				"message": "SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing \"SPDX-License-Identifier: <SPDX-License>\" to each source file. Use \"SPDX-License-Identifier: UNLICENSED\" for non-open-source code. Please see https://spdx.org for more information.",
+				"severity": "warning",
+				"sourceLocation": {
+					"end": -1,
+					"file": "bootcamp/week10/day_3_DAO_Membership_ERC20.sol",
+					"start": -1
+				},
+				"type": "Warning"
+			},
+			{
+				"component": "general",
+				"errorCode": "3420",
+				"formattedMessage": "Warning: Source file does not specify required compiler version! Consider adding \"pragma solidity ^0.8.17;\"\n--> bootcamp/week10/day_3_DAO_Membership_ERC20.sol\n\n",
+				"message": "Source file does not specify required compiler version! Consider adding \"pragma solidity ^0.8.17;\"",
+				"severity": "warning",
+				"sourceLocation": {
+					"end": -1,
+					"file": "bootcamp/week10/day_3_DAO_Membership_ERC20.sol",
+					"start": -1
+				},
+				"type": "Warning"
+			}
+		],
+		"sources": {
+			"bootcamp/week10/day_3_DAO_Membership_ERC20.sol": {
+				"ast": {
+					"absolutePath": "bootcamp/week10/day_3_DAO_Membership_ERC20.sol",
+					"exportedSymbols": {},
+					"id": 1,
+					"nodeType": "SourceUnit",
+					"nodes": [],
+					"src": "1922:0:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}
