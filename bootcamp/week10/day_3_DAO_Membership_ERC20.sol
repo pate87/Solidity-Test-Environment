@@ -136,4 +136,10 @@ contract MembershipERC20 is ERC20("DAOToekn", "DAO") {
 
     }
 
+    // Voting Power: Several models to choose from
+
+    function memberVotingPower(address account) public view returns(uint256 votingPower) {
+        
+    }
+
 }

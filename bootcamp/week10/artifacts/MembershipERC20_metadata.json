@@ -184,6 +184,25 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "memberVotingPower",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "votingPower",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "name",
 				"outputs": [
@@ -487,11 +506,11 @@
 			]
 		},
 		"bootcamp/week10/day_3_DAO_Membership_ERC20.sol": {
-			"keccak256": "0xb2fded13bf200fcf8b82bfcaff58c5a5cd2f6b0c3c348fc9705e214093791975",
+			"keccak256": "0x6c2d2302199d2fc71ff8e9a9357ea590fd775dfb74adb0957e39b1bd6a72d81d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://08fef1ffcdea891971cc15c12aedf51197fc9a58107f3bbab2def088848d429a",
-				"dweb:/ipfs/QmTG8QWfKSRFMdgy5TPqo2BACKMLxbWzypYcE1v3CU2mZx"
+				"bzz-raw://47ee487b5db405eeea8023f4e8855919e2e509fea5920e1a07cd8771bba1c6a3",
+				"dweb:/ipfs/Qmdx2dV8iJedEm3vgDRDyJLz6HJKZohia1k8vkCfFkiRDS"
 			]
 		}
 	},
