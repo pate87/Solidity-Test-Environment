@@ -140,6 +140,65 @@ contract MembershipERC20 is ERC20("DAOToekn", "DAO") {
 
     function memberVotingPower(address account) public view returns(uint256 votingPower) {
         
+        /*
+            MODEL 1 - simplest
+            
+            Returns the number of votes an account can cast - - Uses one-vote-per-token
+            In this model: 1 wei = 1 vote
+
+            vontingPower = balanceOf(account);
+        */
+
+        /* 
+            MODEL 2 - a bit better but still the same as MODEL 1
+            
+            One-vote-per-person: Member gets one vote if they have at least X token 
+        
+            EXEMPLE: if(balanceOf(account) >= minimumTokenBalance) votingPower = 1;
+           
+            uint minimumTokenBalance; // 100 token = 1 votingPower
+            votingPower = balanceOf(account) / minimumTokenBalance;
+        */
+
+        /*
+            MODEL 3
+
+            One-vote-per-X-tokens: Member's token balance divided by some factor is their voting power
+            This is basically the exact same thing as one-vote-per-token, mathematically speaking
+
+            uint256 voteReductionFactor;
+            votingPower = balanceOf(account) / voteReductionFactor;
+        */
+
+        /*
+            MODEL 4 - QUADRATIC VOTING
+
+            Quadratic voting requires using a square root function, which doesn't exist natively in Solidity.
+            Babylonian method - - Uniswap version
+        */
+
+        // Calls the sqr()
+        /*
+            IMPORTANT FOR ERC20
+
+            It's necessary to devid the decimals to calculate with only whole ETH - / 10 ** decimals()
+        */
+        votingPower = sqrt(balanceOf(account) / 10 ** decimals()); // sqrt(1e18) = 1e9 sqrt(1) = 1
+    }
+
+    // Calculating the sqrt for memberVotingPower()
+    function sqrt(uint y) internal pure returns(uint z) {
+        
+        if (y > 3) {
+            z = y;
+            uint x = y / 2 + 1;
+            while (x < z) {
+                z = x;
+                x = (y / x + x) / 2;
+            } 
+        } else if (y != 0) {
+            z = 1;
+        }
     }
 
 }
