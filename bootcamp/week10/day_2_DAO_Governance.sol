@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
+import "./day_3_DAO_Membership_ERC20.sol";
+
 contract Governance {
     // - ProposalState enum - tracking different states a proposal may have:
     enum ProposalState{
@@ -28,6 +30,43 @@ contract Governance {
         ModifyGrantSize
     }
     
+
+    // The proposals array is an array of ProposalData objects, and each index in the array doubles as a proposal ID.
+    ProposalData[] private proposals;
+
+    // - Minimum number of votes required to pass a proposal - for testing assign 5
+    // uint256 private quorum = 5;
+
+    // - Double mapping of address to uint256 to bool to track if an address has already voted for a proposal
+    // Member address => Proposal ID => True if member has voted
+    mapping(address => mapping(uint256 => bool)) public memberHasVoted;
+
+    // Create instance of MembershipERC20 we can interact with
+    MembershipERC20 private iMembership;
+
+    // - Timelock duration for proposal review period (assign to 1 minutes for testing proposes)
+    uint256 reviewPeriod = 1 minutes;
+    // - Timelock duration for proposal voting period (assign to 1 minutes for testing proposes)
+    uint256 votingPeriod = 1 minutes;
+
+    // - Size of each ETH grant (assign 1 ETH for Testing)
+    uint256 public grantAmount;
+
+    // - Balance of ETH available for a new proposal
+    uint256 public availableETH;
+
+    // Add inputs for reviewPeriod, votingPeriod, and grantAmount, and Membership contract address
+    constructor(address _iMembership, uint256 _reviewperiod, uint256 _votingPeriod, uint256 _grantAmount) payable {
+        availableETH = msg.value;
+        grantAmount = 5000;
+
+        reviewPeriod = _reviewperiod;
+        votingPeriod = _votingPeriod;
+        grantAmount = _grantAmount; 
+
+        iMembership = MembershipERC20(_iMembership);
+    }
+
     // - ProposalData struct for general proposal data that contains:
     struct ProposalData {
         // - A timestamp when voting begins
@@ -38,6 +77,8 @@ contract Governance {
         uint256 votesFor;
         // - A counter against votes
         uint256 votesAgainst;
+        // Add property for number of members who voted
+        uint256 memberVoteCount;
         // - A ProposalStatus enum marking the statee of the proposal
         // Creates temp struct var propState from the actual ProposalState
         ProposalState propState;
@@ -51,32 +92,6 @@ contract Governance {
         // - The new ETH amount to be allocated to each grant proposal
         uint256 newETHGrant;
     }
-
-    // The proposals array is an array of ProposalData objects, and each index in the array doubles as a proposal ID.
-    ProposalData[] private proposals;
-
-    // - Minimum number of votes required to pass a proposal (assign 5)
-    uint256 private quorum = 5;
-
-    // - Double mapping of address to uint256 to bool to track if an address has already voted for a proposal
-    // Member address => Proposal ID => True if member has voted
-    mapping(address => mapping(uint256 => bool)) public memberHasVoted;
-
-    // - Timelock duration for proposal review period (assign to 30 seconds for testing proposes)
-    uint256 reviewPeriod = 1 minutes;
-    // - Timelock duration for proposal voting period (assign to 1 minutes for testing proposes)
-    uint256 votingPeriod = 1 minutes;
-
-    // - Size of each ETH grant (assign 1 ETH)
-    uint256 public grantAmount = 1 ether;
-
-    // - Balance of ETH available for a new proposal
-    uint256 public availableETH;
-
-    constructor() payable {
-        availableETH = msg.value;
-    }
-
     // Implement the OpenZeppelin Governor contract state()
     /*  The state function returns the current state of a proposal based on the propID passed as a parameter. 
         The function uses the ProposalData object stored in the proposals array with the same propID to determine the state.
@@ -156,9 +171,30 @@ contract Governance {
     }
 
     // Function to check whether the quorum is reached
-    function _quorumReached(uint256 votesFor, uint256 votesAgainst) private view returns(bool quorumReached) {
-        // quorumReached is taking the sum from votesFor + votesAgainst and compare it with the actual (global number var) quroum - which must be > 5
-        quorumReached = (votesFor + votesAgainst >= quorum);
+    // Instead of counting votes submitted, count number of DAO members who voted
+    function _quorumReached(uint256 propID) private view returns(bool quorumReached) {
+
+        // Sets up a local var - proposal from global var ProposalData
+        // Using storage saves gas against memory 
+        // storage links directly to the global var whereas memory creates a temp copy of the global var
+        // Also we copy everything from the @proposals array with the attached ID and enter it in the new local var proposal
+        ProposalData storage proposal = proposals[propID];
+
+        // quorumReached is taking the sum from votesFor + votesAgainst and compare it with the actual quroum - for testing @quorum > 5
+        // For testing purposes - quorumReached = (votesFor + votesAgainst ›= quorum);
+        // Use getQuorum() instead of quorum
+        // Instead of counting votes submitted, count number of Dao members who voted - memberVoteCount
+        quorumReached = (proposal.memberVoteCount >= getQuorum());
+    }
+
+    // Create onlyMembers modifier to check if caller is a DAO member
+    modifier onlyMembers() {
+        /*
+            Alternatively: 
+            You can use memberVotingPower to check for membership status
+        */
+        require(iMembership.balanceOf(msg.sender) > 0, "Caller not a DAO member");
+        _;
     }
 
     // Function to check whether the ProposalState was Succeeded or Defeated
@@ -192,7 +228,8 @@ contract Governance {
         uint256 votesAgainst = proposal.votesAgainst;
 
         // Sets up a local var from _quorumReached() which checks whether the votes are raeached the minimum quotes needed
-        bool quorumReached = _quorumReached(votesFor, votesAgainst);
+        // For testing purposes -  bool quorumReached = _quorumReached(votesFor, votesAgainst);
+        bool quorumReached = _quorumReached(propID);
 
         // Checks whether quorum was NOT reached during the time of voting
         if(!quorumReached) {
@@ -226,6 +263,7 @@ contract Governance {
             voteEnds: votingBeginDate + votingPeriod,
             votesFor: 0,
             votesAgainst: 0,
+            memberVoteCount: 0,
             propState: ProposalState.Unassigned,
             propType: propType, // ProposalType.IssueGrant
             recipient: recipient,
@@ -238,7 +276,7 @@ contract Governance {
     }
 
     // Submits a new grant request
-    function submitNewGrant(address recipient) public {
+    function submitNewGrant(address recipient) public onlyMembers {
 
         // To save gas fees we create a temp local var from our global var
         uint256 _grantAmount = grantAmount;
@@ -255,7 +293,7 @@ contract Governance {
     }
 
     // Submiths a new grant amount change request
-    function submitNewAmountChange(uint256 newGrantAmount) public {
+    function submitNewAmountChange(uint256 newGrantAmount) public onlyMembers {
         require(newGrantAmount > 0, "Invalid amount");
      
         // - Calls the @_submitProposal(): and call it with 0 input argument besides of the the @newGrantAmount
@@ -284,31 +322,42 @@ contract Governance {
         // Also we copy everything from the @proposals array with the attached ID and enter it in the new local var proposal
         ProposalData storage proposal = proposals[propID];
 
+        // Call Membership.votingPower to determine number of votes to apply to Proposal
+        // Calls the memberVotingPower() from the iMembership and store it in a local var
+        uint256 votingPower = iMembership.memberVotingPower(msg.sender);
+
         // Conditional statement to check whether the vote was For or Against the proposal  
         if(votedFor) {
-            proposal.votesFor++;
+            
+            // Only for testing purposes - proposal.votesFor++;
+            proposal.votesFor += votingPower;
         } else {
-            proposal.votesAgainst++;
+            // Only for testing purposes - proposal.votesAgainst++;
+            proposal.votesAgainst += votingPower;
         }
 
         // Sets the mepping @memberHasVoted to true
         memberHasVoted[msg.sender][propID] = true;
+
+        // Increase the number of @memberVoteCount at ProposalData struct
+        proposal.memberVoteCount++;
     }
 
     // Sets voteFor propID
-    function voteFor(uint256 propID) public voteChecks(propID) {
+    function voteFor(uint256 propID) public onlyMembers voteChecks(propID) {
         _submitVote(propID, true);
     }
     
     // Sets voteAgainst propID
-    function voteAgainst(uint256 propID) public voteChecks(propID) {
+    function voteAgainst(uint256 propID) public onlyMembers voteChecks(propID) {
         _submitVote(propID, false);
     }
     
     //*** EXECUTE ***//
 
+    // @notice Executes a Proposal when it is in the Queued state
     // The execute() is only doable if the voting has stopped
-    function execute(uint256 propID) public {
+    function execute(uint256 propID) public onlyMembers {
 
         // Sets up a local var - proposal from global var ProposalData
         // Using storage saves gas against memory 
@@ -402,7 +451,8 @@ contract Governance {
         //*** This code is equal to the @_tallyVotes() expect we asign the proposal state and not returning them  ***//
 
         // Sets up a local var from _quorumReached() which checks whether the votes are raeached the minimum quotes needed
-        bool quorumReached = _quorumReached(votesFor, votesAgainst);
+        // only for Testing - bool quorumReached = _quorumReached(votesFor, votesAgainst);
+        bool quorumReached = _quorumReached(propID);
         
         // Checks whether quorum was NOT reached during the time of voting
         if(!quorumReached) {
@@ -486,7 +536,11 @@ contract Governance {
     }
 
     function getQuorum() public view returns(uint256) {
-        return quorum;
+        // Only for testing - return quorum;
+
+        // Call Membership contract to get total DAO members, and apply formula to determine quorum
+        // Calls the totalMembers() from iMembership and calcualte 50% for necessary votes
+        return (iMembership.totalMembers() * 50) / 100;
     }
 
 }
