@@ -55,6 +55,7 @@ contract Governance {
     // - Balance of ETH available for a new proposal
     uint256 public availableETH;
 
+    // 1000000000006000000
     // Add inputs for reviewPeriod, votingPeriod, and grantAmount, and Membership contract address
     constructor(address _iMembership, uint256 _reviewperiod, uint256 _votingPeriod, uint256 _grantAmount) payable {
         availableETH = msg.value;
@@ -62,7 +63,7 @@ contract Governance {
 
         reviewPeriod = _reviewperiod;
         votingPeriod = _votingPeriod;
-        grantAmount = _grantAmount; 
+        grantAmount = _grantAmount * 1e18; 
 
         iMembership = MembershipERC20(_iMembership);
     }
@@ -91,6 +92,7 @@ contract Governance {
         uint256 ethGrant;
         // - The new ETH amount to be allocated to each grant proposal
         uint256 newETHGrant;
+        string description;
     }
     // Implement the OpenZeppelin Governor contract state()
     /*  The state function returns the current state of a proposal based on the propID passed as a parameter. 
@@ -253,7 +255,8 @@ contract Governance {
         ProposalType propType,
         address recipient,
         uint256 amount,
-        uint256 newGrantAmount
+        uint256 newGrantAmount,
+        string memory description
     ) private {
         uint256 votingBeginDate = block.timestamp + reviewPeriod;
         // Copy all the struct variables and set it into a new copy with the arguments
@@ -268,7 +271,8 @@ contract Governance {
             propType: propType, // ProposalType.IssueGrant
             recipient: recipient,
             ethGrant: amount,
-            newETHGrant: newGrantAmount
+            newETHGrant: newGrantAmount,
+            description: description
         });
 
         // Push the newPropsal to the array @proposals and give each proposal an ID to call it in the array
@@ -276,7 +280,7 @@ contract Governance {
     }
 
     // Submits a new grant request
-    function submitNewGrant(address recipient) public onlyMembers {
+    function submitNewGrant(address recipient, string memory description) public onlyMembers {
 
         // To save gas fees we create a temp local var from our global var
         uint256 _grantAmount = grantAmount;
@@ -288,17 +292,17 @@ contract Governance {
         availableETH -= _grantAmount;
 
         // - Calls the @_submitProposal():
-        // - the new grantAmount becomes 0 because we calculate it in the @submitNewAmountChange()
-        _submitProposal(ProposalType.IssueGrant, recipient, _grantAmount, 0);
+        // - the new grantAmount becomes 0 because we calculate it in the @changeAmountOfProposal()
+        _submitProposal(ProposalType.IssueGrant, recipient, _grantAmount, 0, description);
     }
 
     // Submiths a new grant amount change request
-    function submitNewAmountChange(uint256 newGrantAmount) public onlyMembers {
+    function changeAmountOfProposal(uint256 newGrantAmount, string memory description) public onlyMembers {
         require(newGrantAmount > 0, "Invalid amount");
      
         // - Calls the @_submitProposal(): and call it with 0 input argument besides of the the @newGrantAmount
         // The other arguments are changed in the @submitNewGrant()
-        _submitProposal(ProposalType.ModifyGrantSize, address(0), 0, newGrantAmount);
+        _submitProposal(ProposalType.ModifyGrantSize, address(0), 0, newGrantAmount, description);
      
     }
 
@@ -541,6 +545,10 @@ contract Governance {
         // Call Membership contract to get total DAO members, and apply formula to determine quorum
         // Calls the totalMembers() from iMembership and calcualte 50% for necessary votes
         return (iMembership.totalMembers() * 50) / 100;
+    }
+
+    receive() external payable {
+        availableETH += msg.value;
     }
 
 }
