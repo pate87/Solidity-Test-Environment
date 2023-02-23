@@ -40,6 +40,7 @@ contract marketplaceItem1 {
     // 0.007510326699211416
 
     function payInEth() public payable returns(bool) {
+        require(alreadyBought[msg.sender] == false, "You already bought this item");
         require(msg.value == uint(getPriceOfETH()), "Wrong amount of ETH!");
         // move the ETH to the owner's account 
         (bool sent, /*data*/) = owner.call{value: msg.value}("");
